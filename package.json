@@ -1,0 +1,22 @@
+{
+  "name": "nistarband",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o . --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eligence/nistar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eligence/nistar/issues"
+  },
+  "homepage": "https://github.com/eligence/nistar#readme",
+  "dependencies": {
+    "node-sass": "^8.0.0"
+  }
+}
