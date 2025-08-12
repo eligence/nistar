@@ -40,7 +40,6 @@
               ></span>
             </span>
           </NuxtLink>
-          <ColorModeButton class="ml-4" />
         </nav>
 
         <!-- Mobile menu button -->
@@ -81,9 +80,7 @@
               :class="{ 'opacity-0': !isActive(item.to) }"
             ></span>
           </NuxtLink>
-          <div class="pt-4">
-            <ColorModeButton size="xl" />
-          </div>
+
         </nav>
       </div>
     </Transition>

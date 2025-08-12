@@ -14,4 +14,9 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    'animate-pulse',
+    'animate-bounce',
+    'animate-spin',
+  ]
 }
