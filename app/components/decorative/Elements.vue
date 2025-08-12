@@ -1,175 +1,174 @@
 <template>
-  <!-- Floating Circles Background -->
-  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-    <!-- Large background circles -->
-    <div
-        v-for="i in 5"
-        :key="'circle-bg-' + i"
-        class="absolute rounded-full bg-gradient-to-br from-primary/5 to-primary/20 blur-circle"
-        :class="getRandomPosition()"
-        :style="{
-        width: `${getRandomSize(200, 500)}px`,
-        height: `${getRandomSize(200, 500)}px`,
-        opacity: getRandomOpacity(0.1, 0.3)
-      }"
-    />
-
-    <!-- Small animated dots -->
-    <div
-        v-for="i in 20"
-        :id="'dot-' + i"
-        :key="'dot-' + i"
-        class="absolute rounded-full bg-primary/30 animate-pulse-custom"
-        :class="getRandomPosition()"
-        :style="{
-        width: `${getRandomSize(2, 6)}px`,
-        height: `${getRandomSize(2, 6)}px`,
-        animationDuration: `${getRandomDuration(4, 8)}s`,
-        animationDelay: `${getRandomDelay(0, 5)}s`
-      }"
-    />
-
-    <!-- Subtle grid pattern -->
-    <div
-        class="absolute inset-0 grid-pattern"
-    ></div>
-  </div>
-
-  <!-- Hebrew letter particles -->
-  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none mix-blend-overlay">
-    <span
-        v-for="(letter, i) in hebrewLetters"
-        :key="'letter-' + i"
-        class="absolute text-primary/20 font-hebrew text-2xl md:text-4xl select-none animate-float"
-        :class="getRandomPosition()"
-        :style="{
-        transform: `rotate(${getRandomRotation()}deg)`,
-        opacity: getRandomOpacity(0.1, 0.3),
-        animationDuration: `${getRandomDuration(15, 30)}s`,
-        animationDelay: `${getRandomDelay(0, 10)}s`
-      }"
-    >
-      {{ letter }}
-    </span>
-  </div>
-
-  <!-- Subtle corner decorations -->
-  <div class="fixed top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-primary/20 pointer-events-none"></div>
-  <div class="fixed top-0 right-0 w-32 h-32 border-t-2 border-r-2 border-primary/20 pointer-events-none"></div>
-  <div class="fixed bottom-0 left-0 w-32 h-32 border-b-2 border-l-2 border-primary/20 pointer-events-none"></div>
-  <div class="fixed bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-primary/20 pointer-events-none"></div>
+  <canvas
+    ref="canvasRef"
+    class="fixed inset-0 -z-10 overflow-hidden pointer-events-none smoke-canvas"
+  />
 </template>
 
 <script setup>
-// Hebrew letters with Kabbalistic significance
-const hebrewLetters = [
-  'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י',
-  'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר',
-  'ש', 'ת', 'ך', 'ם', 'ן', 'ף', 'ץ', '׃', '״', '׳'
-];
+const canvasRef = ref(null)
+let webGLHandler = null
+let resizeObserver = null
 
-// Helper functions
-const getRandomPosition = () => {
-  const positions = [
-    'top-1/4 left-1/4',
-    'top-1/3 right-1/3',
-    'bottom-1/4 left-1/3',
-    'top-2/3 right-1/4',
-    'top-1/2 left-1/2',
-    'top-1/4 right-1/4',
-    'bottom-1/3 left-1/3',
-    'top-2/3 left-1/4',
-    'bottom-1/2 right-1/2',
-  ];
-  return positions[Math.floor(Math.random() * positions.length)];
-};
+const fragmentShaderSource = `#version 300 es
+precision highp float;
 
-const getRandomSize = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+uniform float time;
+uniform vec2 vp;
 
-const getRandomOpacity = (min, max) => {
-  return (Math.random() * (max - min) + min).toFixed(2);
-};
+in vec2 uv;
+out vec4 fragColor;
 
-const getRandomDuration = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+float rand(vec2 p) {
+    return fract(sin(dot(p.xy, vec2(1., 300.))) * 43758.5453123);
+}
 
-const getRandomDelay = (min, max) => {
-  return Math.random() * (max - min) + min;
-};
+// Based on Morgan McGuire
+float noise(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
 
-const getRandomRotation = () => {
-  return Math.floor(Math.random() * 360);
-};
+    // Four corners in 2D of a tile
+    float a = rand(i);
+    float b = rand(i + vec2(1.0, 0.0));
+    float c = rand(i + vec2(0.0, 1.0));
+    float d = rand(i + vec2(1.0, 1.0));
+
+    vec2 u = f * f * (3.0 - 2.0 * f);
+
+    return mix(a, b, u.x) +
+            (c - a)* u.y * (1.0 - u.x) +
+            (d - b) * u.x * u.y;
+}
+
+#define OCTAVES 5
+float fbm(vec2 p) {
+    // Initial values
+    float value = 0.;
+    float amplitude = .4;
+    float frequency = 0.;
+
+    // Loop of octaves
+    for (int i = 0; i < OCTAVES; i++) {
+        value += amplitude * noise(p);
+        p *= 2.;
+        amplitude *= .4;
+    }
+    return value;
+}
+
+void main() {
+    vec2 p = uv.xy;
+    p.x *= vp.x / vp.y;
+
+    float gradient = mix(p.y*.2 + .1, p.y*1.2 + .9, fbm(p));
+    float speed = 0.1;
+    float details = 7.;
+    float force = .9;
+    float shift = .5;
+
+    vec2 fast = vec2(p.x, p.y - time*speed) * details;
+    float ns_a = fbm(fast);
+    float ns_b = force * fbm(fast + ns_a + time) - shift;
+    float nns = force * fbm(vec2(ns_a, ns_b));
+    float ins = fbm(vec2(ns_b, ns_a));
+
+    vec3 c1 = mix(vec3(.2, .5, .3), vec3(.0, .0, .5), ins + shift);
+
+    fragColor = vec4(c1 + vec3(ins - gradient), 1.0);
+}
+`;
+
+
+class WebGLHandler {
+  vertexShaderSource = `#version 300 es
+        precision mediump float;
+        const vec2 positions[6] = vec2[6](vec2(-1.0, -1.0), vec2(1.0, -1.0), vec2(-1.0, 1.0), vec2(-1.0, 1.0), vec2(1.0, -1.0), vec2(1.0, 1.0));
+        out vec2 uv;
+        void main() {
+            uv = positions[gl_VertexID];
+            gl_Position = vec4(positions[gl_VertexID], 0.0, 1.0);
+        }`;
+
+  constructor(canvas, fragmentShaderSource) {
+    this.cn = canvas;
+    this.gl = canvas.getContext("webgl2");
+    this.startTime = Date.now();
+
+    this.resize();
+    window.addEventListener("resize", () => this.resize());
+
+    this.program = this.gl.createProgram();
+    this.compileShader(this.vertexShaderSource, this.gl.VERTEX_SHADER);
+    this.compileShader(fragmentShaderSource, this.gl.FRAGMENT_SHADER);
+    this.gl.linkProgram(this.program);
+    this.gl.useProgram(this.program);
+
+    this.timeLocation = this.gl.getUniformLocation(this.program, "time");
+    this.resolutionLocation = this.gl.getUniformLocation(this.program, "vp");
+
+    this.render();
+  }
+
+  resize() {
+    this.cn.width = window.innerWidth;
+    this.cn.height = window.innerHeight;
+    this.gl.viewport(0, 0, this.cn.width, this.cn.height);
+  }
+
+  compileShader(source, type) {
+    const shader = this.gl.createShader(type);
+    this.gl.shaderSource(shader, source);
+    this.gl.compileShader(shader);
+    if (!this.gl.getShaderParameter(shader, this.gl.COMPILE_STATUS)) {
+      console.error(this.gl.getShaderInfoLog(shader));
+      this.gl.deleteShader(shader);
+      return null;
+    }
+    return this.gl.attachShader(this.program, shader);
+  }
+
+  render = () => {
+    this.gl.uniform1f(this.timeLocation, (Date.now() - this.startTime) / 1000);
+    this.gl.uniform2fv(this.resolutionLocation, [
+      this.cn.width,
+      this.cn.height
+    ]);
+    this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
+    window.requestAnimationFrame(this.render);
+  };
+}
+
+onMounted(() => {
+  if (canvasRef.value) {
+    webGLHandler = new WebGLHandler(canvasRef.value, fragmentShaderSource)
+
+    // Set up ResizeObserver for better responsiveness
+    resizeObserver = new ResizeObserver(() => {
+      if (webGLHandler) {
+        webGLHandler.resize()
+      }
+    })
+    resizeObserver.observe(canvasRef.value.parentElement)
+  }
+})
+
+onUnmounted(() => {
+  if (webGLHandler) {
+    webGLHandler.destroy()
+    webGLHandler = null
+  }
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+    resizeObserver = null
+  }
+})
 </script>
 
 <style scoped>
-/* Move all keyframes inside scoped styles */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(var(--initial-rotation, 0deg));
-  }
-  25% {
-    transform: translateY(-15px) rotate(calc(var(--initial-rotation, 0deg) + 3deg));
-  }
-  50% {
-    transform: translateY(-20px) rotate(calc(var(--initial-rotation, 0deg) + 5deg));
-  }
-  75% {
-    transform: translateY(-10px) rotate(calc(var(--initial-rotation, 0deg) + 2deg));
-  }
-}
-
-@keyframes pulse-custom {
-  0% {
-    opacity: 0.2;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.5);
-  }
-  100% {
-    opacity: 0.2;
-    transform: scale(1);
-  }
-}
-
-/* Animation classes */
-.animate-pulse-custom {
-  animation: pulse-custom 4s infinite ease-in-out;
-  will-change: transform, opacity;
-}
-
-.animate-float {
-  animation: float 20s infinite ease-in-out;
-  will-change: transform;
-}
-
-.blur-circle {
-  filter: blur(60px);
-}
-
-.grid-pattern {
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
-  background-size: 40px 40px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .blur-circle {
-    filter: blur(40px);
-  }
-
-  /* Reduce animation complexity on mobile */
-  .animate-pulse-custom {
-    animation-duration: 6s;
-  }
-
-  .animate-float {
-    animation-duration: 30s;
-  }
+.smoke-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 </style>
