@@ -1,53 +1,54 @@
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-    :class="{ 'bg-black/90 backdrop-blur-sm': isScrolled || isMobileMenuOpen, 'bg-transparent': !isScrolled && !isMobileMenuOpen }"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+    :class="{ 'bg-black/80 backdrop-blur-md shadow-lg': isScrolled || isMobileMenuOpen, 'bg-transparent': !isScrolled && !isMobileMenuOpen }"
   >
     <div class="container mx-auto px-4 py-3">
       <div class="flex items-center justify-between">
         <!-- Logo -->
         <NuxtLink
-          to="/public"
+          to="/"
           class="flex items-center group"
           @click="scrollToTop"
+          aria-label="Home"
         >
           <img
-            src="/images/Nister_Logo-eng.png"
-            alt="Nistar Logo"
-            class="w-12 h-12 rounded-full border-2 border-gray-800 bg-gray-500 transition-transform duration-300 group-hover:scale-105"
+            src="/Nister_Logo-eng.png"
+            alt="Nistar"
+            class="w-10 h-10 transition-all duration-500 group-hover:opacity-90"
           />
         </NuxtLink>
 
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center space-x-8">
-          <span class="font-mono text-lg font-bold tracking-wider text-white mr-4">NISTAR</span>
+          <span class="font-serif text-lg tracking-widest text-amber-300 mr-4">NISTAR</span>
+          <div class="h-6 w-px bg-gray-700"></div>
           <NuxtLink
             v-for="item in navItems"
             :key="item.to"
             :to="item.to"
-            class="text-white hover:text-purple-300 transition-colors duration-200 uppercase text-sm tracking-wider relative group"
-            :class="{ 'text-purple-300': isActive(item.to) }"
+            class="text-sm text-gray-300 hover:text-amber-300 transition-all duration-300 uppercase tracking-widest relative group"
+            :class="{ 'text-amber-300': isActive(item.to) }"
             @click="handleNavClick($event, item.to)"
+            :aria-label="item.label"
           >
-            {{ item.label }}
-            <span
-              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"
-              :class="{ 'w-full': isActive(item.to) }"
-            ></span>
+            <span class="relative">
+              {{ item.label }}
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-px bg-amber-300 transition-all duration-300 group-hover:w-full"
+                :class="{ 'w-full': isActive(item.to) }"
+              ></span>
+            </span>
           </NuxtLink>
           <ColorModeButton class="ml-4" />
         </nav>
 
         <!-- Mobile menu button -->
         <button
-          class="md:hidden p-2 text-white focus:outline-none"
+          class="md:hidden p-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-300/50 rounded-md transition-all duration-200"
           @click="toggleMobileMenu"
+          :aria-expanded="isMobileMenuOpen"
           aria-label="Toggle menu"
-        >
-          <UIcon
-            :name="isMobileMenuOpen ? 'i-heroicons-x-mark' : 'i-heroicons-bars-3'"
-            class="w-8 h-8"
-          />
         </button>
       </div>
     </div>
@@ -90,9 +91,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useRoute } from 'vue-router';
-
 const route = useRoute();
 const isMobileMenuOpen = ref(false);
 const isScrolled = ref(false);
