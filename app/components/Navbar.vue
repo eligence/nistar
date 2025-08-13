@@ -15,7 +15,7 @@
           <img
             src="/Nister_Logo-eng.png"
             alt="Nistar"
-            class="w-10 h-10 transition-all duration-500 group-hover:opacity-90"
+            class="w-10 h-10 transition-all duration-500 group-hover:opacity-90 bg-gray-100 rounded-full shadow-2xl"
           />
         </NuxtLink>
 
