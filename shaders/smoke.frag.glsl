@@ -7,28 +7,28 @@ uniform vec2 vp;
 in vec2 uv;
 out vec4 fragColor;
 
-// Color palette - base1 and base2 pairs
+// Color palette - base1 and base2 pairs (brightness reduced for brighter colors)
 const vec3 colorPalette[20] = vec3[20](
 // Royal Blue (teal-green/dark blue)
 vec3(0.20, 0.50, 0.30), vec3(0.00, 0.00, 0.50),
 // Teal
-vec3(0.11, 0.42, 0.49), vec3(0.05, 0.21, 0.25),
+vec3(0.11, 0.42, 0.49), vec3(0.06, 0.21, 0.25),
 // Emerald Green
-vec3(0.10, 0.49, 0.37), vec3(0.05, 0.25, 0.18),
+vec3(0.10, 0.49, 0.37), vec3(0.05, 0.25, 0.19),
 // Lime Green
-vec3(0.29, 0.55, 0.17), vec3(0.15, 0.27, 0.09),
-// Golden Yellow
-vec3(0.83, 0.66, 0.12), vec3(0.42, 0.33, 0.06),
-// Orange (matches your example)
-vec3(0.90, 0.49, 0.13), vec3(0.45, 0.25, 0.07),
-// Coral
-vec3(0.91, 0.30, 0.24), vec3(0.46, 0.15, 0.12),
-// Pink
-vec3(0.85, 0.11, 0.38), vec3(0.43, 0.05, 0.19),
+vec3(0.22, 0.42, 0.13), vec3(0.11, 0.21, 0.07),
+// Golden Yellow - dimmed
+vec3(0.43, 0.34, 0.06), vec3(0.22, 0.17, 0.03),
+// Orange - dimmed
+vec3(0.47, 0.25, 0.07), vec3(0.24, 0.13, 0.04),
+// Coral - dimmed
+vec3(0.48, 0.16, 0.13), vec3(0.24, 0.08, 0.07),
+// Pink - dimmed
+vec3(0.44, 0.06, 0.20), vec3(0.22, 0.03, 0.10),
 // Violet
 vec3(0.56, 0.27, 0.68), vec3(0.28, 0.13, 0.34),
 // Deep Purple
-vec3(0.18, 0.10, 0.28), vec3(0.10, 0.05, 0.14)
+vec3(0.18, 0.10, 0.28), vec3(0.09, 0.05, 0.14)
 );
 
 float rand(vec2 p) {
