@@ -10,6 +10,7 @@ const canvasRef = ref(null)
 let webGLHandler = null
 let resizeObserver = null
 
+// credit: https://codepen.io/Akash_Ramani/pen/oggRObV?editors=0010
 const fragmentShaderSource = `#version 300 es
 precision highp float;
 
@@ -62,20 +63,36 @@ void main() {
     p.x *= vp.x / vp.y;
 
     float gradient = mix(p.y*.2 + .1, p.y*1.2 + .9, fbm(p));
-    float speed = 0.1;
-    float details = 7.;
-    float force = .9;
-    float shift = .5;
 
-    vec2 fast = vec2(p.x, p.y - time*speed) * details;
-    float ns_a = fbm(fast);
-    float ns_b = force * fbm(fast + ns_a + time) - shift;
-    float nns = force * fbm(vec2(ns_a, ns_b));
-    float ins = fbm(vec2(ns_b, ns_a));
+    // First smoke layer (slower)
+    float speed1 = 0.05;  // Slower speed for first layer
+    float details1 = 5.0;
+    float force1 = 0.8;
+    float shift1 = 0.5;
 
-    vec3 c1 = mix(vec3(.2, .5, .3), vec3(.0, .0, .5), ins + shift);
+    vec2 layer1 = vec2(p.x, p.y - time * speed1) * details1;
+    float ns_a1 = fbm(layer1);
+    float ns_b1 = force1 * fbm(layer1 + ns_a1 + time * 0.5) - shift1;
+    float ins1 = fbm(vec2(ns_b1, ns_a1));
+    vec3 c1 = mix(vec3(0.2, 0.5, 0.3), vec3(0.0, 0.0, 0.5), ins1 + shift1);
 
-    fragColor = vec4(c1 + vec3(ins - gradient), 1.0);
+    // Second smoke layer (faster) - using original color scheme
+    float speed2 = 0.1;  // Faster speed for second layer
+    float details2 = 7.0;
+    float force2 = 0.9;
+    float shift2 = 0.5;
+
+    vec2 layer2 = vec2(p.x, p.y - time * speed2) * details2;
+    float ns_a2 = fbm(layer2 * 1.5);
+    float ns_b2 = force2 * fbm(layer2 + ns_a2 + time * 0.7) - shift2;
+    float ins2 = fbm(vec2(ns_b2, ns_a2));
+    vec3 c2 = mix(vec3(0.2, 0.5, 0.3), vec3(0.0, 0.0, 0.5), ins2 + shift2);
+
+    // Blend the two layers with original colors
+    float blend = 0.6;  // Slightly more weight to the second layer for visibility
+    vec3 finalColor = mix(c1, c2, blend) + vec3((ins1 + ins2) * 0.5 - gradient);
+
+    fragColor = vec4(finalColor, 1.0);
 }
 `;
 
