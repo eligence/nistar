@@ -20,7 +20,7 @@
         </NuxtLink>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center space-x-8">
+        <nav class="hidden md:flex items-center gap-4">
           <span class="font-serif text-lg tracking-widest text-amber-300 mr-4">NISTAR</span>
           <div class="h-6 w-px bg-gray-700"></div>
           <NuxtLink
