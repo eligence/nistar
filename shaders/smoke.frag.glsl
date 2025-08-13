@@ -143,8 +143,9 @@ void main() {
         float phase = 6.28 * noise(vec2(seed + float(i) * 15.0, 20.0));
         float amp = 0.01 + 0.04 * noise(vec2(seed + float(i) * 20.0, 30.0));
         
-        // Add wave to sum
-        waveSum += sin(p.x * freq + time * speed + phase) * amp;
+        // Use a fixed time factor to prevent speed increase
+        float waveTime = time * 0.5;  // Fixed speed multiplier
+        waveSum += sin(p.x * freq + waveTime * speed + phase) * amp;
         totalAmp += amp;
     }
     
