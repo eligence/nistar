@@ -43,12 +43,40 @@
         </nav>
 
         <!-- Mobile menu button -->
-        <button
+        <UButton
+          color="neutral"
+          variant="link"
           class="md:hidden p-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-300/50 rounded-md transition-all duration-200"
           @click="toggleMobileMenu"
           :aria-expanded="isMobileMenuOpen"
           aria-label="Toggle menu"
-        </button>
+        >
+          <span class="sr-only">Menu</span>
+          <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+                v-if="!isMobileMenuOpen"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+            >
+            </path>
+            <path
+                v-else
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+            >
+            </path>
+          </svg>
+        </UButton>
       </div>
     </div>
 
@@ -198,21 +226,22 @@ header {
   -webkit-backdrop-filter: blur(8px);
 }
 
+   /* Custom animation for the menu icon */
+svg {
+ transform-origin: center;
+}
+
+/* Smooth transition for the paths */
+path {
+  transform-origin: center;
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
 /* Ensure the header is above other content */
 header {
   z-index: 1000;
-}
-
-/* Smooth transition for mobile menu */
-.mobile-menu-enter-active,
-.mobile-menu-leave-active {
-  transition: all 0.3s ease;
-}
-
-.mobile-menu-enter-from,
-.mobile-menu-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
 }
 
 /* Nav link hover effect */
