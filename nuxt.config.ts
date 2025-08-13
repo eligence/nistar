@@ -7,9 +7,13 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/content',
     '@nuxt/image',
-    '@nuxt/scripts'
+    '@nuxt/scripts',
+    '@tresjs/nuxt'
   ],
-
+  tres: {
+    devtools: true,
+    glsl: true,
+  },
   css: ['~/assets/css/main.css'],
 
   compatibilityDate: '2025-07-16'
