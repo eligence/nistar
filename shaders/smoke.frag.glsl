@@ -126,7 +126,7 @@ void main() {
     float gradient = mix(p.y*.2 + .1, p.y*1.2 + .9, fbm(p));
 
     // First smoke layer (slower)
-    float speed1 = 0.05;  // Slower speed for first layer
+    float speed1 = 0.01;  // Slower speed for first layer
     float details1 = 5.0;
     float force1 = 0.8;
     float shift1 = 0.5;
@@ -138,7 +138,7 @@ void main() {
     vec3 c1 = mix(getAnimatedColor1(time), getAnimatedColor2(time), ins1 + shift1);
 
     // Second smoke layer (faster)
-    float speed2 = 0.1;  // Faster speed for second layer
+    float speed2 = 0.04;  // Faster speed for second layer
     float details2 = 7.0;
     float force2 = 0.9;
     float shift2 = 0.5;
