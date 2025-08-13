@@ -7,6 +7,30 @@ uniform vec2 vp;
 in vec2 uv;
 out vec4 fragColor;
 
+// Color palette - base1 and base2 pairs
+const vec3 colorPalette[20] = vec3[20](
+// Royal Blue (teal-green/dark blue)
+vec3(0.20, 0.50, 0.30), vec3(0.00, 0.00, 0.50),
+// Teal
+vec3(0.11, 0.42, 0.49), vec3(0.05, 0.21, 0.25),
+// Emerald Green
+vec3(0.10, 0.49, 0.37), vec3(0.05, 0.25, 0.18),
+// Lime Green
+vec3(0.29, 0.55, 0.17), vec3(0.15, 0.27, 0.09),
+// Golden Yellow
+vec3(0.83, 0.66, 0.12), vec3(0.42, 0.33, 0.06),
+// Orange (matches your example)
+vec3(0.90, 0.49, 0.13), vec3(0.45, 0.25, 0.07),
+// Coral
+vec3(0.91, 0.30, 0.24), vec3(0.46, 0.15, 0.12),
+// Pink
+vec3(0.85, 0.11, 0.38), vec3(0.43, 0.05, 0.19),
+// Violet
+vec3(0.56, 0.27, 0.68), vec3(0.28, 0.13, 0.34),
+// Deep Purple
+vec3(0.18, 0.10, 0.28), vec3(0.10, 0.05, 0.14)
+);
+
 float rand(vec2 p) {
     return fract(sin(dot(p.xy, vec2(1., 300.))) * 43758.5453123);
 }
@@ -45,6 +69,15 @@ float fbm(vec2 p) {
     return value;
 }
 
+// Helper function to get color pair by index (0-9)
+vec3 getColor1(int index) {
+    return colorPalette[index * 2];
+}
+
+vec3 getColor2(int index) {
+    return colorPalette[index * 2 + 1];
+}
+
 void main() {
     vec2 p = uv.xy;
     p.x *= vp.x / vp.y;
@@ -61,9 +94,9 @@ void main() {
     float ns_a1 = fbm(layer1);
     float ns_b1 = force1 * fbm(layer1 + ns_a1 + time * 0.5) - shift1;
     float ins1 = fbm(vec2(ns_b1, ns_a1));
-    vec3 c1 = mix(vec3(0.2, 0.5, 0.3), vec3(0.0, 0.0, 0.5), ins1 + shift1);
+    vec3 c1 = mix(getColor1(0), getColor2(0), ins1 + shift1); // Orange palette
 
-    // Second smoke layer (faster) - using original color scheme
+    // Second smoke layer (faster)
     float speed2 = 0.1;  // Faster speed for second layer
     float details2 = 7.0;
     float force2 = 0.9;
@@ -73,17 +106,7 @@ void main() {
     float ns_a2 = fbm(layer2 * 1.5);
     float ns_b2 = force2 * fbm(layer2 + ns_a2 + time * 0.7) - shift2;
     float ins2 = fbm(vec2(ns_b2, ns_a2));
-    /*{ base1: [0.18, 0.10, 0.28], base2: [0.10, 0.05, 0.14] }, // Deep Purple
-  { base1: [0.20, 0.50, 0.30], base2: [0.00, 0.00, 0.50] }, // Royal Blue (teal-green/dark blue)
-  { base1: [0.11, 0.42, 0.49], base2: [0.05, 0.21, 0.25] }, // Teal
-  { base1: [0.10, 0.49, 0.37], base2: [0.05, 0.25, 0.18] }, // Emerald Green
-  { base1: [0.29, 0.55, 0.17], base2: [0.15, 0.27, 0.09] }, // Lime Green
-  { base1: [0.83, 0.66, 0.12], base2: [0.42, 0.33, 0.06] }, // Golden Yellow
-  { base1: [0.90, 0.49, 0.13], base2: [0.45, 0.25, 0.07] }, // Orange
-  { base1: [0.91, 0.30, 0.24], base2: [0.46, 0.15, 0.12] }, // Coral
-  { base1: [0.85, 0.11, 0.38], base2: [0.43, 0.05, 0.19] }, // Pink
-  { base1: [0.56, 0.27, 0.68], base2: [0.28, 0.13, 0.34] }  // Violet*/
-    vec3 c2 = mix(vec3(0.2, 0.5, 0.3), vec3(0.0, 0.0, 0.5), ins2 + shift2);
+    vec3 c2 = mix(getColor1(0), getColor2(0), ins2 + shift2); // Orange palette
 
     // Blend the two layers with original colors
     float blend = 0.6;  // Slightly more weight to the second layer for visibility
