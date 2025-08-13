@@ -78,6 +78,47 @@ vec3 getColor2(int index) {
     return colorPalette[index * 2 + 1];
 }
 
+// Get interpolated colors with smooth transition
+vec3 getAnimatedColor1(float time) {
+    float transitionSpeed = 5.0; // 5 seconds per transition
+    float totalCycle = transitionSpeed * 10.0; // Total time for all 10 colors
+
+    // Current position in the cycle (0.0 to 10.0)
+    float cyclePos = mod(time, totalCycle) / transitionSpeed;
+
+    // Current and next color indices
+    int currentIndex = int(floor(cyclePos));
+    int nextIndex = int(mod(float(currentIndex + 1), 10.0));
+
+    // Interpolation factor (0.0 to 1.0)
+    float t = fract(cyclePos);
+
+    // Smooth transition using smoothstep
+    t = smoothstep(0.0, 1.0, t);
+
+    return mix(getColor1(currentIndex), getColor1(nextIndex), t);
+}
+
+vec3 getAnimatedColor2(float time) {
+    float transitionSpeed = 5.0; // 5 seconds per transition
+    float totalCycle = transitionSpeed * 10.0; // Total time for all 10 colors
+
+    // Current position in the cycle (0.0 to 10.0)
+    float cyclePos = mod(time, totalCycle) / transitionSpeed;
+
+    // Current and next color indices
+    int currentIndex = int(floor(cyclePos));
+    int nextIndex = int(mod(float(currentIndex + 1), 10.0));
+
+    // Interpolation factor (0.0 to 1.0)
+    float t = fract(cyclePos);
+
+    // Smooth transition using smoothstep
+    t = smoothstep(0.0, 1.0, t);
+
+    return mix(getColor2(currentIndex), getColor2(nextIndex), t);
+}
+
 void main() {
     vec2 p = uv.xy;
     p.x *= vp.x / vp.y;
@@ -94,7 +135,7 @@ void main() {
     float ns_a1 = fbm(layer1);
     float ns_b1 = force1 * fbm(layer1 + ns_a1 + time * 0.5) - shift1;
     float ins1 = fbm(vec2(ns_b1, ns_a1));
-    vec3 c1 = mix(getColor1(0), getColor2(0), ins1 + shift1); // Orange palette
+    vec3 c1 = mix(getAnimatedColor1(time), getAnimatedColor2(time), ins1 + shift1);
 
     // Second smoke layer (faster)
     float speed2 = 0.1;  // Faster speed for second layer
@@ -106,7 +147,7 @@ void main() {
     float ns_a2 = fbm(layer2 * 1.5);
     float ns_b2 = force2 * fbm(layer2 + ns_a2 + time * 0.7) - shift2;
     float ins2 = fbm(vec2(ns_b2, ns_a2));
-    vec3 c2 = mix(getColor1(0), getColor2(0), ins2 + shift2); // Orange palette
+    vec3 c2 = mix(getAnimatedColor1(time), getAnimatedColor2(time), ins2 + shift2);
 
     // Blend the two layers with original colors
     float blend = 0.6;  // Slightly more weight to the second layer for visibility
