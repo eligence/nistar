@@ -121,9 +121,9 @@ const isMobileMenuOpen = ref(false);
 const isScrolled = ref(false);
 
 const navItems = [
-  { to: '#about', label: 'about' },
-  { to: '#listen', label: 'listen' },
-  { to: '#contact', label: 'contact' },
+  { to: '/about', label: 'about' },
+  { to: '/listen', label: 'listen' },
+  { to: '/contact', label: 'contact' },
 ];
 
 // Handle scroll effect for header
