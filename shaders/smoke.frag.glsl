@@ -123,14 +123,52 @@ void main() {
     vec2 p = uv.xy;
     p.x *= vp.x / vp.y;
 
-    float gradient = mix(p.y*.2 + .1, p.y*1.2 + .9, fbm(p));
+    // Generate random seed based on time
+    float seed = time * 0.2;
+    
+    // Random number of waves (between 3 and 6)
+    int numWaves = 3 + int(floor(noise(vec2(seed, 0.0)) * 4.0));
+    
+    // Initialize wave sum
+    float waveSum = 0.0;
+    float totalAmp = 0.0;
+    
+    // Generate multiple waves with random properties
+    for (int i = 0; i < 8; i++) {
+        if (i >= numWaves) break;
+        
+        // Random wave properties
+        float freq = 1.0 + 6.0 * noise(vec2(seed + float(i) * 10.0, 5.0));
+        float speed = 0.1 + 0.4 * noise(vec2(seed + float(i) * 5.0, 10.0));
+        float phase = 6.28 * noise(vec2(seed + float(i) * 15.0, 20.0));
+        float amp = 0.01 + 0.04 * noise(vec2(seed + float(i) * 20.0, 30.0));
+        
+        // Add wave to sum
+        waveSum += sin(p.x * freq + time * speed + phase) * amp;
+        totalAmp += amp;
+    }
+    
+    // Normalize wave sum
+    if (numWaves > 0) {
+        waveSum /= totalAmp / 0.03; // Keep overall amplitude in check
+    }
+    
+    // Fade waves with height
+    float horizonWarp = waveSum * (1.0 - p.y * 0.7);
+    
+    // Base gradient with animated horizon
+    float baseGradient = mix(p.y * 0.2 + 0.1, p.y * 1.2 + 0.9, fbm(p + time * 0.05));
+    float gradient = baseGradient + horizonWarp;
 
     // First smoke layer (slower)
     float speed1 = 0.01;  // Slower speed for first layer
-    float details1 = 5.0;
-    float force1 = 0.8;
-    float shift1 = 0.5;
+    
+    // Add subtle random variations to the first layer's characteristics
+    float details1 = 5.0 + sin(time * 0.05) * 0.5;  // Slight oscillation in detail
+    float force1 = 0.8 + noise(vec2(time * 0.1, 0.5)) * 0.1 - 0.05;  // Subtle random force variation
+    float shift1 = 0.5 + sin(time * 0.03) * 0.1;  // Slow shifting of the noise pattern
 
+    // Vertical movement only
     vec2 layer1 = vec2(p.x, p.y - time * speed1) * details1;
     float ns_a1 = fbm(layer1);
     float ns_b1 = force1 * fbm(layer1 + ns_a1 + time * 0.5) - shift1;
@@ -139,10 +177,13 @@ void main() {
 
     // Second smoke layer (faster)
     float speed2 = 0.04;  // Faster speed for second layer
-    float details2 = 7.0;
-    float force2 = 0.9;
-    float shift2 = 0.5;
+    
+    // Add different random variations for the second layer
+    float details2 = 7.0 + cos(time * 0.07) * 0.7;  // Different oscillation pattern
+    float force2 = 0.9 + noise(vec2(time * 0.08, 1.5)) * 0.08 - 0.04;  // Subtle random force variation
+    float shift2 = 0.5 + sin(time * 0.04 + 1.57) * 0.15;  // Different phase for variation
 
+    // Vertical movement only for second layer
     vec2 layer2 = vec2(p.x, p.y - time * speed2) * details2;
     float ns_a2 = fbm(layer2 * 1.5);
     float ns_b2 = force2 * fbm(layer2 + ns_a2 + time * 0.7) - shift2;
@@ -150,8 +191,12 @@ void main() {
     vec3 c2 = mix(getAnimatedColor1(time), getAnimatedColor2(time), ins2 + shift2);
 
     // Blend the two layers with original colors
-    float blend = 0.6;  // Slightly more weight to the second layer for visibility
-    vec3 finalColor = mix(c1, c2, blend) + vec3((ins1 + ins2) * 0.5 - gradient);
+    float blend = 0.6 + sin(time * 0.02) * 0.05;  // Subtle variation in layer blending
+    
+    // Add animated noise to the gradient for organic feel
+    float gradientNoise = noise(p * 3.0 + vec2(time * 0.15, time * 0.1)) * 0.15 - 0.075;
+    // Apply the noise to the gradient for more organic peaks/valleys
+    vec3 finalColor = mix(c1, c2, blend) + vec3((ins1 + ins2) * 0.5 - (gradient + gradientNoise));
 
     fragColor = vec4(finalColor, 1.0);
 }
