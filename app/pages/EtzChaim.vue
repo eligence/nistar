@@ -1,6 +1,6 @@
 <template>
 <div class="flex items-center justify-center">
-  <EtzChaim />
+  <EtzChaim :show-lines="true"/>
 </div>
 </template>
 

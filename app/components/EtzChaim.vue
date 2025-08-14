@@ -63,6 +63,14 @@
     </svg>
 </template>
 
+<script setup lang="ts">
+const props = defineProps<{
+  showLines?: boolean
+}>()
+
+const lineDisplay = computed(() => props.showLines ? 'block' : 'none')
+
+</script>
 <style scoped>
 .etz-chaim-svg {
   display: block;
@@ -73,7 +81,7 @@
 .sephiroth-group {
   fill: none;
   stroke: #ffffff;
-  stroke-width: 1.5;
+  stroke-width: 8;
   stroke-linecap: round;
   stroke-linejoin: bevel;
   stroke-miterlimit: 4;
@@ -83,37 +91,29 @@
 /* Progressive opacity for circles */
 /*.circle-0 { stroke-opacity: 0.6; }
 .circle-1 { stroke-opacity: 0.9; }
-.circle-2 { stroke-opacity: 0.8; }
-.circle-3 { stroke-opacity: 0.7; }
-.circle-4 { stroke-opacity: 0.6; }
-.circle-5 { stroke-opacity: 0.5; }
-.circle-6 { stroke-opacity: 0.4; }
-.circle-7 { stroke-opacity: 0.3; }
-.circle-8 { stroke-opacity: 0.2; }
-.circle-9 { stroke-opacity: 0.1; }
-.circle-10 { stroke-opacity: 0.05; }*/
+.circle-2 { stroke-opacity: 0.9; }
+.circle-3 { stroke-opacity: 0.9; }
+.circle-4 { stroke-opacity: 0.9; }
+.circle-5 { stroke-opacity: 0.9; }
+.circle-6 { stroke-opacity: 0.9; }
+.circle-7 { stroke-opacity: 0.9; }
+.circle-8 { stroke-opacity: 0.9; }
+.circle-9 { stroke-opacity: 0.9; }
+.circle-10 { stroke-opacity: 0.6; }*/
 
 .connecting-line,
 .vertical-line,
 .decorative-line {
+  display: v-bind(lineDisplay);
   fill: none;
   fill-rule: evenodd;
   stroke: #ffffff;
-  stroke-width: 1.5;
+  stroke-width: 3;
   stroke-linecap: butt;
   stroke-linejoin: miter;
   //stroke-opacity: 0.3;
   stroke-opacity: 1;
   stroke-miterlimit: 4;
   stroke-dasharray: none;
-}
-
-/* Specific styles for different line types if needed */
-.vertical-line {
-  /* Add specific styles for vertical lines if needed */
-}
-
-.decorative-line {
-  /* Add specific styles for decorative lines if needed */
 }
 </style>

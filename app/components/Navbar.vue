@@ -39,13 +39,13 @@
       <UButton
         :aria-expanded="isMobileMenuOpen"
         aria-label="Toggle menu"
-        class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-amber-300/50 rounded-md transition-all duration-200 hover:cursor-pointer"
+        class="size-10 md:hidden text-white focus:outline-none focus:ring-2 focus:ring-amber-300/50 rounded-md transition-all duration-200 hover:cursor-pointer relative"
         color="neutral"
         variant="link"
         @click="toggleMobileMenu"
       >
         <span class="sr-only">Menu</span>
-        <Hamburger :isMobileMenuOpen="isMobileMenuOpen"/>
+        <Hamburger :isMobileMenuOpen="isMobileMenuOpen" class="-mt-3"/>
       </UButton>
     </div>
   </header>
