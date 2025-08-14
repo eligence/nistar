@@ -48,43 +48,16 @@
         <Hamburger :isMobileMenuOpen="isMobileMenuOpen"/>
       </UButton>
     </div>
-    <!-- Mobile menu -->
-    <Transition
-        enter-active-class="transition duration-300 ease-out"
-        enter-from-class="opacity-0 -translate-y-4"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-active-class="transition duration-200 ease-in"
-        leave-from-class="opacity-100 translate-y-0"
-        leave-to-class="opacity-0 -translate-y-4"
-    >
-      <div
-          v-if="isMobileMenuOpen"
-          class="md:hidden bg-black/95 backdrop-blur-lg w-full absolute top-full left-0 right-0 py-6 px-4 shadow-lg border-t border-gray-800"
-      >
-        <nav class="flex flex-col space-y-6 items-center">
-          <ULink
-              v-for="item in navItems"
-              :key="item.to"
-              :to="item.to"
-              class="text-xl text-white hover:text-purple-300 transition-colors duration-200 w-full text-center py-2 relative"
-          >
-            {{ item.label }}
-            <span
-                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-purple-400 transition-all duration-300"
-            ></span>
-          </ULink>
-
-        </nav>
-      </div>
-    </Transition>
+  <MobileMenu :isMobileMenuOpen="isMobileMenuOpen" :navItems="navItems"/>
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import NavItem from "./MobileMenu.vue";
 const route = useRoute();
 const isMobileMenuOpen = ref(false);
 
-const navItems = [
+const navItems: NavItem = [
   {to: '/about', label: 'about'},
   {to: '/listen', label: 'listen'},
   {to: '/contact', label: 'contact'},
