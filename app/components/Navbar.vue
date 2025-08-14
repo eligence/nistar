@@ -35,7 +35,7 @@
             </span>
         </ULink>
       </nav>
-      <Hamburger :isMobileMenuOpen="isMobileMenuOpen" class="-mt-3" @click="toggleMobileMenu"/>
+      <MenuToggle :isMobileMenuOpen="isMobileMenuOpen" class="-mt-3" @click="toggleMobileMenu"/>
     </div>
   </header>
   <MobileMenu :isMobileMenuOpen="isMobileMenuOpen" :navItems="navItems"/>
@@ -43,6 +43,7 @@
 
 <script setup lang="ts">
 import NavItem from "./MobileMenu.vue";
+import MenuToggle from "./MenuToggle.vue";
 const route = useRoute();
 const isMobileMenuOpen = ref(false);
 
