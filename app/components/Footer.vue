@@ -8,57 +8,33 @@
             &copy; {{ new Date().getFullYear() }} NISTAR. ALL RIGHTS RESERVED.
           </p>
         </div>
-
-        <!-- Navigation Links -->
         <nav class="flex flex-wrap justify-center space-x-6">
-          <NuxtLink
-              to="#about"
-              class="text-sm hover:text-primary transition-colors duration-300"
-              @click.prevent="scrollToSection('about')"
-          >
-            About
-          </NuxtLink>
-          <NuxtLink
-              to="#listen"
-              class="text-sm hover:text-primary transition-colors duration-300"
-              @click.prevent="scrollToSection('listen')"
-          >
-            Listen
-          </NuxtLink>
-          <NuxtLink
-              to="#contact"
-              class="text-sm hover:text-primary transition-colors duration-300"
-              @click.prevent="scrollToSection('contact')"
-          >
-            Contact
-          </NuxtLink>
+          <UButton
+            v-for="item in navItems"
+            :to="item.to"
+            :icon="item.icon"
+            :aria-label="item.ariaLabel"
+            class="text-white hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-amber-300/50 rounded-md transition-all duration-200"
+            color="neutral"
+            variant="link"
+          />
         </nav>
 
-        <!-- Back to Top -->
-        <button
-            @click="scrollToTop"
-            class="hidden md:flex items-center hover:text-primary transition-colors duration-300 mt-4 md:mt-0 group"
-            aria-label="Back to top"
-        >
-          <span class="text-xs mr-2 group-hover:translate-y-[-2px] transition-transform duration-300">BACK TO TOP</span>
-          <UIcon name="i-heroicons-arrow-up" class="w-4 h-4" />
-        </button>
-      </div>
-
-      <!-- Small Print -->
-      <div class="mt-8 pt-6 border-t border-gray-800/30 text-center">
-        <p class="text-xs text-gray-500">
-          NISTAR - נִסְתָּר - The Hidden Light in Music
-        </p>
+        <div class="text-center">
+          <p class="text-xs text-gray-500">
+            NISTAR - נִסְתָּר - The Hidden Light in Music
+          </p>
+        </div>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
-
+const navItems = [
+  {to: 'https://www.instagram.com/nistar_band/', icon: 'i-fa6-brands:instagram', ariaLabel: 'Instagram page link'},
+  {to: 'https://www.facebook.com/nistarBand', icon: 'i-fa6-brands:square-facebook', ariaLabel: 'Facebook page link'},
+  {to: 'mailto:eligence@gmail.com', label: 'about', icon: 'i-fa6-regular:envelope', ariaLabel: 'Email link'},
+];
 </script>
 
-<style scoped>
-
-</style>

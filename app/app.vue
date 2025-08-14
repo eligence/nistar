@@ -61,13 +61,6 @@ onMounted(() => {
 </script>
 
 <style>
-/* Global styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -138,32 +131,4 @@ h3 { font-size: 1.75rem; }
   h2 { font-size: 2.5rem; }
   h3 { font-size: 2rem; }
 }
-
-/* Links */
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-/* Buttons */
-button, .btn {
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Utility classes */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.text-center { text-align: center; }
-.mb-4 { margin-bottom: 1rem; }
-.mb-8 { margin-bottom: 2rem; }
-.mb-12 { margin-bottom: 3rem; }
-.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
 </style>
