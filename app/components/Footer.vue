@@ -1,10 +1,10 @@
 <template>
-  <footer class="bg-background/80 backdrop-blur-sm border-t border-foreground/10 relative z-10">
+  <footer class="backdrop-blur-sm border-t border-foreground/10 relative z-10">
     <div class="container mx-auto px-4 py-8">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <!-- Copyright -->
         <div class="mb-4 md:mb-0">
-          <p class="text-sm text-foreground/60">
+          <p class="text-sm">
             &copy; {{ new Date().getFullYear() }} NISTAR. ALL RIGHTS RESERVED.
           </p>
         </div>
@@ -13,21 +13,21 @@
         <nav class="flex flex-wrap justify-center space-x-6">
           <NuxtLink
               to="#about"
-              class="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
+              class="text-sm hover:text-primary transition-colors duration-300"
               @click.prevent="scrollToSection('about')"
           >
             About
           </NuxtLink>
           <NuxtLink
               to="#listen"
-              class="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
+              class="text-sm hover:text-primary transition-colors duration-300"
               @click.prevent="scrollToSection('listen')"
           >
             Listen
           </NuxtLink>
           <NuxtLink
               to="#contact"
-              class="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
+              class="text-sm hover:text-primary transition-colors duration-300"
               @click.prevent="scrollToSection('contact')"
           >
             Contact
@@ -37,7 +37,7 @@
         <!-- Back to Top -->
         <button
             @click="scrollToTop"
-            class="hidden md:flex items-center text-foreground/70 hover:text-primary transition-colors duration-300 mt-4 md:mt-0 group"
+            class="hidden md:flex items-center hover:text-primary transition-colors duration-300 mt-4 md:mt-0 group"
             aria-label="Back to top"
         >
           <span class="text-xs mr-2 group-hover:translate-y-[-2px] transition-transform duration-300">BACK TO TOP</span>

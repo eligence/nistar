@@ -146,10 +146,6 @@ a {
   transition: color 0.3s ease;
 }
 
-a:hover {
-  color: #a5b4fc;
-}
-
 /* Buttons */
 button, .btn {
   cursor: pointer;

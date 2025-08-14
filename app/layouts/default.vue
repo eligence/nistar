@@ -1,24 +1,17 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-background text-foreground relative overflow-hidden">
+  <div class="min-h-screen flex flex-col relative overflow-hidden">
     <Elements />
     <Navbar />
-
-    <!-- Page Content -->
     <main class="flex-grow relative z-0">
       <slot />
     </main>
-
     <Footer />
   </div>
 </template>
 
 <script setup>
-// Import components
 import Navbar from '~/components/Navbar.vue';
 import Elements from '~/components/decorative/Elements.vue';
-
-// Import useHead
-import { useHead } from '#imports';
 
 // Meta tags for SEO
 useHead({
