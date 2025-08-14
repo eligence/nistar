@@ -9,17 +9,18 @@
   >
     <div
         v-if="isMobileMenuOpen"
-        class="md:hidden bg-black/95 backdrop-blur-lg w-full fixed top-0 left-0 right-0 bottom-0 py-6 px-4 shadow-lg border-t border-gray-800 flex flex-col justify-center z-50"
+        class="md:hidden bg-black/95 backdrop-blur-lg w-full fixed top-0 left-0 right-0 bottom-0 py-6 px-4 shadow-lg border-t border-gray-800 flex flex-col justify-center z-30"
     >
       <nav class="flex flex-col space-y-6 items-center">
         <ULink
-            v-for="item in navItems"
+            v-for="(item, index) in orderedNavItems"
             :key="item"
             :to="item.to"
             class="text-xl text-white hover:text-purple-300 transition-colors duration-200 w-full text-center py-2 relative"
         >
           {{ item.label }}
           <span
+              v-if="item.to === route.path"
               class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-purple-400 transition-all duration-300"
           ></span>
         </ULink>
@@ -33,10 +34,23 @@ type NavItem = {
   to: string,
   label: string
 }
-defineProps<{
+const props = defineProps<{
   isMobileMenuOpen?: boolean,
   navItems: NavItem
 }>()
+
+const route = useRoute() // Get current route
+
+const orderedNavItems = computed<NavItem[]>(() => {
+  const itemsWithHome = [...props.navItems, { to: '/', label: 'home' }];
+  return itemsWithHome.sort((a, b) => {
+    // Sort active item to the top
+    if (a.to === route.path) return -1;
+    if (b.to === route.path) return 1;
+    // Otherwise, sort alphabetically by label
+    return a.label.localeCompare(b.label);
+  });
+});
 </script>
 
 <style scoped>

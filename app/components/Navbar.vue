@@ -48,8 +48,8 @@
         <Hamburger :isMobileMenuOpen="isMobileMenuOpen"/>
       </UButton>
     </div>
-  <MobileMenu :isMobileMenuOpen="isMobileMenuOpen" :navItems="navItems"/>
   </header>
+  <MobileMenu :isMobileMenuOpen="isMobileMenuOpen" :navItems="navItems"/>
 </template>
 
 <script setup lang="ts">
