@@ -1,100 +1,57 @@
 <template>
-  <svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" style="background: transparent;">
-    <!-- Connecting paths -->
-    <g stroke="white" stroke-width="3" fill="none" opacity="0.8">
-      <!-- From Keter to Chokmah and Binah -->
-      <line x1="200" y1="80" x2="120" y2="160" />
-      <line x1="200" y1="80" x2="280" y2="160" />
-
-      <!-- From Keter to Tiferet -->
-      <line x1="200" y1="80" x2="200" y2="300" />
-
-      <!-- Between Chokmah and Binah -->
-      <line x1="120" y1="160" x2="280" y2="160" />
-
-      <!-- From Chokmah to Chesed -->
-      <line x1="120" y1="160" x2="120" y2="240" />
-
-      <!-- From Binah to Geburah -->
-      <line x1="280" y1="160" x2="280" y2="240" />
-
-      <!-- From Chokmah and Binah to Tiferet -->
-      <line x1="120" y1="160" x2="200" y2="300" />
-      <line x1="280" y1="160" x2="200" y2="300" />
-
-      <!-- From Chesed and Geburah to Tiferet -->
-      <line x1="120" y1="240" x2="200" y2="300" />
-      <line x1="280" y1="240" x2="200" y2="300" />
-
-      <!-- Between Chesed and Geburah -->
-      <line x1="120" y1="240" x2="280" y2="240" />
-
-      <!-- From Chesed to Netzach -->
-      <line x1="120" y1="240" x2="120" y2="400" />
-
-      <!-- From Geburah to Hod -->
-      <line x1="280" y1="240" x2="280" y2="400" />
-
-      <!-- From Tiferet to Netzach and Hod -->
-      <line x1="200" y1="300" x2="120" y2="400" />
-      <line x1="200" y1="300" x2="280" y2="400" />
-
-      <!-- From Tiferet to Yesod -->
-      <line x1="200" y1="300" x2="200" y2="480" />
-
-      <!-- Between Netzach and Hod -->
-      <line x1="120" y1="400" x2="280" y2="400" />
-
-      <!-- From Netzach and Hod to Yesod -->
-      <line x1="120" y1="400" x2="200" y2="480" />
-      <line x1="280" y1="400" x2="200" y2="480" />
-
-      <!-- From Yesod to Malkuth -->
-      <line x1="200" y1="480" x2="200" y2="560" />
-
-      <!-- Cross connections (additional paths) -->
-      <line x1="120" y1="240" x2="280" y2="400" />
-      <line x1="280" y1="240" x2="120" y2="400" />
+  <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="576" height="1010" viewBox="-2 2 288 505">
+    <metadata>
+      <rdf:RDF>
+        <cc:Work rdf:about="">
+          <dc:format>image/svg+xml</dc:format>
+          <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        </cc:Work>
+      </rdf:RDF>
+    </metadata>
+    <defs>
+      <g id="Sephiroth">
+        <circle cx="35.2041" cy="312.031" r="34.2186"/>
+        <circle cx="36.179" cy="218.431" r="34.2186"/>
+        <circle cx="35.2041" cy="124.831" r="34.2186"/>
+        <circle cx="142.454" cy="66.3313" r="34.2186"/>
+        <circle cx="248.728" cy="123.856" r="34.2186"/>
+        <circle cx="248.728" cy="218.431" r="34.2186"/>
+        <circle cx="248.728" cy="312.031" r="34.2186"/>
+        <circle cx="141.479" cy="257.431" r="34.2186"/>
+        <circle cx="142.454" cy="352.006" r="34.2186"/>
+        <circle cx="142.454" cy="446.581" r="34.2186"/>
+      </g>
+    </defs>
+    <g style="opacity: 1; fill: none; fill-opacity: 1; fill-rule: nonzero; stroke:#ffffff;; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: bevel; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0pt; stroke-opacity: 1;">
+      <use xlink:href="#Sephiroth"/>
+      <circle style="stroke:#ffffff;" cx="141.479" cy="163.831" r="34.2186"/>
     </g>
+    <path :style="lineStyles" d="M 162.85,418.275 L 227.2,339.3" id="path3154"/>
+    <path :style="lineStyles" d="M 216.45,324.675 L 175.525,343.2" id="path3156" sodipodi:nodetypes="cc"/>
+    <path :style="lineStyles" d="M 216.45,298.35 L 168.675,275.925" id="path3158"/>
+    <path :style="lineStyles" d="M 216.45,231.075 L 175.5,251.55" id="path3160" sodipodi:nodetypes="cc"/>
+    <path :style="lineStyles" d="M 161.85,229.125 L 227.175,150.15" id="path3162"/>
+    <path :style="lineStyles" d="M 69.275,124.8 L 214.525,123.825" id="path3166"/>
+    <path :style="lineStyles" d="M 113.15,82.875 L 65.375,109.2" id="path3168"/>
+    <path :style="lineStyles" d="M 57.525,151.125 L 122.85,228.1" id="path3172"/>
+    <path :style="lineStyles" d="M 68.3,232.05 L 107.2,251.55" id="path3174"/>
+    <path :style="lineStyles" d="M 112.125,274.95 L 64.35,294.45" id="path3176"/>
+    <path :style="lineStyles" d="M 141.375,291.5 L 141.375,317.85" id="path3178"/>
+    <path :style="lineStyles" d="M 69.275,312 L 214.5,312" id="path3180"/>
+    <path :style="lineStyles" d="M 68.3,322.725 L 111.15,340.275" id="path3182"/>
+    <path :style="lineStyles" d="M 56.575,338.325 L 123.825,418.275" id="path3184"/>
 
-    <!-- Sephirot circles with matching colors -->
+    <path :style="lineStyles" d="M 142.454,100.4 L 142.454,130.3" id="path3170"/>
 
-    <!-- Keter (Crown) - Light blue/white -->
-    <circle cx="200" cy="80" r="25" fill="#E6F3FF" fill-opacity="0.3" stroke="#4A90E2" stroke-width="3"/>
-
-    <!-- Chokmah (Wisdom) - Gray -->
-    <circle cx="120" cy="160" r="22" fill="#D3D3D3" fill-opacity="0.3" stroke="#808080" stroke-width="3"/>
-
-    <!-- Binah (Understanding) - Dark blue/black -->
-    <circle cx="280" cy="160" r="22" fill="#1E1E2E" fill-opacity="0.3" stroke="#2C3E50" stroke-width="3"/>
-
-    <!-- Chesed (Mercy) - Blue -->
-    <circle cx="120" cy="240" r="22" fill="#4A90E2" fill-opacity="0.3" stroke="#2E5B8A" stroke-width="3"/>
-
-    <!-- Geburah (Severity) - Red -->
-    <circle cx="280" cy="240" r="22" fill="#E74C3C" fill-opacity="0.3" stroke="#C0392B" stroke-width="3"/>
-
-    <!-- Tiferet (Beauty) - Yellow/Gold -->
-    <circle cx="200" cy="300" r="25" fill="#F1C40F" fill-opacity="0.3" stroke="#D4AC0D" stroke-width="3"/>
-
-    <!-- Netzach (Victory) - Green -->
-    <circle cx="120" cy="400" r="22" fill="#27AE60" fill-opacity="0.3" stroke="#1E8449" stroke-width="3"/>
-
-    <!-- Hod (Splendor) - Orange -->
-    <circle cx="280" cy="400" r="22" fill="#E67E22" fill-opacity="0.3" stroke="#CA6F1E" stroke-width="3"/>
-
-    <!-- Yesod (Foundation) - Purple -->
-    <circle cx="200" cy="480" r="22" fill="#8E44AD" fill-opacity="0.3" stroke="#6C3483" stroke-width="3"/>
-
-    <!-- Malkuth (Kingdom) - Brown/Earth tones -->
-    <circle cx="200" cy="560" r="25" fill="#8B4513" fill-opacity="0.3" stroke="#5D2F0A" stroke-width="3"/>
+    <path :style="lineStyles" d="M 218.4,108.225 L 172.575,82.875" id="path3284-1"/>
+    <path :style="lineStyles" d="M 35.120192,158.9 L 35.1,184.275" id="path3284-2"/>
+    <path :style="lineStyles" d="M 35.157692,252.525 L 35.1,277.875" id="path3284-3"/>
+    <path :style="lineStyles" d="M 248.63106,252.525 L 248.625,277.875" id="path3284-4"/>
+    <path :style="lineStyles" d="M 248.625,157.975 L 248.625,184.275" id="path3284-5"/>
+    <path :style="lineStyles" d="M 70.225,218.4 L 214.525,218.4" id="path3284-6"/>
+    <path :style="lineStyles" d="M 142.454,386 L 142.454,412" id="path3284-7"/>
   </svg>
 </template>
-
 <script setup lang="ts">
-
+const lineStyles = ref("fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none")
 </script>
-
-<style scoped>
-
-</style>
