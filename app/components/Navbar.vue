@@ -39,7 +39,7 @@
       <UButton
         :aria-expanded="isMobileMenuOpen"
         aria-label="Toggle menu"
-        class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-amber-300/50 rounded-md transition-all duration-200"
+        class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-amber-300/50 rounded-md transition-all duration-200 hover:cursor-pointer"
         color="neutral"
         variant="link"
         @click="toggleMobileMenu"

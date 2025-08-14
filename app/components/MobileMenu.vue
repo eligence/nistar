@@ -1,9 +1,9 @@
 <template>
   <Transition
-      enter-active-class="transition duration-300 ease-out"
+      enter-active-class="transition duration-1500 ease-out"
       enter-from-class="opacity-0 -translate-y-4"
       enter-to-class="opacity-100 translate-y-0"
-      leave-active-class="transition duration-200 ease-in"
+      leave-active-class="transition duration-1000 ease-in"
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-4"
   >
@@ -13,7 +13,7 @@
     >
       <nav class="flex flex-col space-y-6 items-center">
         <ULink
-            v-for="(item, index) in orderedNavItems"
+            v-for="item in orderedNavItems"
             :key="item"
             :to="item.to"
             class="text-xl text-white hover:text-purple-300 transition-colors duration-200 w-full text-center py-2 relative"
