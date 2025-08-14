@@ -22,15 +22,15 @@
           :key="item.to"
           :aria-label="item.label"
           :to="item.to"
-          active-class="font-bold text-blue-300"
-          class="text-sm hover:text-blue-300 transition-all duration-300 uppercase tracking-widest relative group"
+          active-class="font-bold text-purple-400"
+          class="text-sm hover:text-purple-400 transition-all duration-300 uppercase tracking-widest relative group"
           inactive-class="text-gray-300"
         >
             <span class="relative">
               {{ item.label }}
               <span
                 :class="{ 'w-full': item.to === route.name }"
-                class="absolute -bottom-1 left-0 w-0 h-px bg-amber-300 transition-all duration-300 group-hover:w-full"
+                class="absolute -bottom-1 left-0 w-0 h-px bg-purple-400 transition-all duration-300 group-hover:w-full"
               ></span>
             </span>
         </ULink>
