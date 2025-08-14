@@ -11,6 +11,7 @@
         v-if="isMobileMenuOpen"
         class="md:hidden bg-black/95 backdrop-blur-lg w-full fixed top-0 left-0 right-0 bottom-0 py-6 px-4 shadow-lg border-t border-gray-800 flex flex-col justify-center z-30"
     >
+      <EtzChaim :show-lines="true" class="absolute top-60 left-1/2 transform -translate-x-1/2 opacity-3 size-50" />
       <nav class="flex flex-col space-y-6 items-center">
         <ULink
             v-for="item in orderedNavItems"
@@ -21,7 +22,7 @@
           {{ item.label }}
           <span
               v-if="item.to === route.path"
-              class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-purple-400 transition-all duration-300"
+              class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/4 h-0.5 bg-purple-400 transition-all duration-300"
           ></span>
         </ULink>
       </nav>
