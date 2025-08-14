@@ -11,7 +11,7 @@
     <div v-if="!isMobileMenuOpen" class="size-6">
       <EtzChaim />
     </div>
-    <UIcon v-else name="i-charm:disc" class="size-6" />
+    <Or v-else class="absolute top-3 left-0 transform size-10" />
   </UButton>
 </template>
 
