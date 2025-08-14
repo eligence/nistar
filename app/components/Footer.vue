@@ -19,12 +19,7 @@
             variant="link"
           />
         </nav>
-
-        <div class="text-center">
-          <p class="text-xs text-gray-500">
-            NISTAR - נִסְתָּר - The Hidden Light in Music
-          </p>
-        </div>
+        <div class="glass-text mt-4 md:mt-0">NISTAR - נִסְתָּר - The Hidden Light in Music</div>
       </div>
     </div>
   </footer>
@@ -38,3 +33,14 @@ const navItems = [
 ];
 </script>
 
+<style scoped>
+.glass-text {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(12px);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 500;
+}
+</style>
