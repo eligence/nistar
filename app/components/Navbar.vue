@@ -35,18 +35,7 @@
             </span>
         </ULink>
       </nav>
-      <!-- Mobile menu button -->
-      <UButton
-        :aria-expanded="isMobileMenuOpen"
-        aria-label="Toggle menu"
-        class="size-10 md:hidden text-white focus:outline-none focus:ring-2 focus:ring-amber-300/50 rounded-md transition-all duration-200 hover:cursor-pointer relative"
-        color="neutral"
-        variant="link"
-        @click="toggleMobileMenu"
-      >
-        <span class="sr-only">Menu</span>
-        <Hamburger :isMobileMenuOpen="isMobileMenuOpen" class="-mt-3"/>
-      </UButton>
+      <Hamburger :isMobileMenuOpen="isMobileMenuOpen" class="-mt-3" @click="toggleMobileMenu"/>
     </div>
   </header>
   <MobileMenu :isMobileMenuOpen="isMobileMenuOpen" :navItems="navItems"/>
