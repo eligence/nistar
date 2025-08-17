@@ -97,24 +97,10 @@
   background: #475569;
 }
 
-/* Section styling */
-section {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  scroll-margin-top: 80px; /* Space for fixed header */
-  overflow: hidden;
-}
-
 /* Responsive typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
 }
 
 h1 { font-size: 2.5rem; }

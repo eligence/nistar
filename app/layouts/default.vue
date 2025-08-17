@@ -3,6 +3,7 @@
     <Elements />
     <Navbar />
     <main class="flex-grow relative z-0">
+      <slot name="header"></slot>
       <slot />
     </main>
     <Footer />

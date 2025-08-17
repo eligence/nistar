@@ -1,22 +1,19 @@
 <template>
-  <section id="about">
-    <h2>about</h2>
-    <p>
-      <span>Chassidic Funk, Soul, Jazz Originals</span><br>
-      <span>Imbuing music with Divine meditation</span><br>
-      <span>Opening mind and heart to trust and faith in The Creator with improvisation</span><br>
-      <span>Strengthening our connection to our essential being with wordless song</span>
-    </p>
-    <p>
-      <span>Ary Baldioceda - drums</span>
-      <br>
-      <span>Eli Jayson - keyboards and saxophone</span>
-    </p>
-  </section>
+  <PageLayout :header="'about'">
+    <p>Chassidic Funk, Soul, Jazz Originals</p>
+    <p>Imbuing music with Divine meditation</p>
+    <p>Opening mind and heart to trust and faith in The Creator with improvisation</p>
+    <p>Strengthening our connection to our essential being with wordless song</p>
+    <template #details>
+      <p>Ary Baldioceda - drums</p>
+      <p>Eli Jayson - keyboards and saxophone</p>
+    </template>
+  </PageLayout>
 </template>
 
 <script setup lang="ts">
 
+import PageLayout from "../components/PageLayout.vue";
 </script>
 
 <style scoped>
