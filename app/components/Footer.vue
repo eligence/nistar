@@ -29,7 +29,8 @@
 const navItems = [
   {to: 'https://www.instagram.com/nistar_band/', icon: 'i-fa6-brands:instagram', ariaLabel: 'Instagram page link'},
   {to: 'https://www.facebook.com/nistarBand', icon: 'i-fa6-brands:square-facebook', ariaLabel: 'Facebook page link'},
-  {to: 'mailto:eligence@gmail.com', label: 'about', icon: 'i-fa6-regular:envelope', ariaLabel: 'Email link'},
+  {to: 'https://www.youtube.com/@nistar_band', icon: 'i-fa6-brands:square-youtube', ariaLabel: 'Youtube page link'},
+  {to: 'mailto:eligence@gmail.com', icon: 'i-fa6-regular:envelope', ariaLabel: 'Email link'},
 ];
 </script>
 
