@@ -1,9 +1,9 @@
 <template>
   <Transition
-      enter-active-class="transition duration-1500 ease-out"
+      enter-active-class="transition duration-1000 ease-out"
       enter-from-class="opacity-0 -translate-y-4"
       enter-to-class="opacity-100 translate-y-0"
-      leave-active-class="transition duration-1000 ease-in"
+      leave-active-class="transition duration-300 ease-in"
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-4"
   >
@@ -26,6 +26,9 @@
           ></span>
         </ULink>
       </nav>
+      <div class="absolute left-0 right-0 bottom-8 w-full flex justify-center">
+        <SocialLinks />
+      </div>
     </div>
   </Transition>
 </template>
