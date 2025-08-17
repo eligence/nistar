@@ -34,15 +34,17 @@
 </template>
 
 <script setup lang="ts">
+import {useMobileMenu} from "../composables/useMobileMenu";
+
 type NavItem = {
   to: string,
   label: string
 }
 const props = defineProps<{
-  isMobileMenuOpen?: boolean,
   navItems: NavItem
 }>()
 
+const { isMobileMenuOpen } = useMobileMenu()
 const route = useRoute() // Get current route
 
 const orderedNavItems = computed<NavItem[]>(() => {

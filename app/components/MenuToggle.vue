@@ -48,11 +48,9 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, ref} from "vue";
+import {useMobileMenu} from "../composables/useMobileMenu";
 
-defineProps<{
-  isMobileMenuOpen?: boolean
-}>()
+const { isMobileMenuOpen } = useMobileMenu()
 const isTransformed = ref(false)
 const centerFilled = ref(false)
 

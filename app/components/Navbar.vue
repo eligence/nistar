@@ -44,8 +44,9 @@
 <script setup lang="ts">
 import NavItem from "./MobileMenu.vue";
 import MenuToggle from "./MenuToggle.vue";
+import {useMobileMenu} from "../composables/useMobileMenu";
 const route = useRoute();
-const isMobileMenuOpen = ref(false);
+const { isMobileMenuOpen } = useMobileMenu()
 
 const navItems: NavItem = [
   {to: '/about', label: 'about'},

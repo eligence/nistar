@@ -1,5 +1,5 @@
 <template>
-  <footer class="backdrop-blur-sm border-t border-foreground/10 relative z-10">
+  <footer class="backdrop-blur-sm border-t border-foreground/10 relative z-10" :class="{ 'hidden': isMobileMenuOpen }">
     <div class="container mx-auto px-4 py-8">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <!-- Copyright -->
@@ -16,6 +16,11 @@
     </div>
   </footer>
 </template>
+<script setup lang="ts">
+import {useMobileMenu} from "../composables/useMobileMenu";
+
+const { isMobileMenuOpen } = useMobileMenu()
+</script>
 
 <style scoped>
 .glass-text {
