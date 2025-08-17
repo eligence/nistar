@@ -23,7 +23,7 @@
           :r="originalRadius"
           fill="none"
           stroke="white"
-          stroke-width="3"
+          :stroke-width="isTransformed ? 3 : 20"
           :style="getCircleStyle(sephira, index)"
       />
 

@@ -35,7 +35,7 @@
             </span>
         </ULink>
       </nav>
-      <MenuToggle :isMobileMenuOpen="isMobileMenuOpen" class="-mt-3" @click="toggleMobileMenu"/>
+      <MenuToggle :isMobileMenuOpen="isMobileMenuOpen" @click="toggleMobileMenu"/>
     </div>
   </header>
   <MobileMenu :isMobileMenuOpen="isMobileMenuOpen" :navItems="navItems"/>
