@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   modules: [
     '@nuxt/ui',
@@ -85,8 +85,8 @@ export default defineNuxtConfig({
 
   // Module configurations
   tres: {
-    devtools: true,
-    glsl: true,
+    devtools: false,
+    glsl: false,
   },
   css: ['~/assets/css/main.css'],
 
