@@ -14,6 +14,8 @@ export default defineNuxtConfig({
 
   // SEO Configuration
   app: {
+    baseURL: '/nistar/',
+    buildAssetsDir: 'assets/',
     head: {
       title: 'Nistar | Chassidic Funk, Soul & Jazz Music',
       htmlAttrs: {
@@ -62,7 +64,11 @@ export default defineNuxtConfig({
       ]
     }
   },
-
+  nitro: {
+    prerender: {
+      routes: ['/sitemap.xml']
+    }
+  },
   // Sitemap configuration
   sitemap: {
     hostname: 'https://www.nistarband.com',
