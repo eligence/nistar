@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
     '@nuxt/eslint',
-    '@nuxt/content',
     '@nuxt/image',
     '@nuxt/scripts',
     '@tresjs/nuxt',
@@ -54,7 +53,12 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'canonical', href: 'https://www.nistarband.com' },
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap',
+          crossorigin: ''
+        }
       ]
     }
   },
