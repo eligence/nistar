@@ -12,10 +12,13 @@
 </template>
 
 <script setup lang="ts">
-
-import PageLayout from "../components/PageLayout.vue";
+useHead({
+  title: 'About Nistar - Chassidic Funk, Soul & Jazz',
+  meta: [
+    {
+      name: 'description',
+      content: 'Learn about Nistar, a Florida-based band fusing Chassidic melodies with contemporary funk, soul, and jazz. Discover our mission and meet the musicians.'
+    }
+  ]
+});
 </script>
-
-<style scoped>
-
-</style>

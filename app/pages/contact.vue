@@ -11,4 +11,13 @@
   </PageLayout>
 </template>
 <script setup lang="ts">
+useHead({
+  title: 'Contact Nistar - Booking & Inquiries',
+  meta: [
+    {
+      name: 'description',
+      content: 'Contact Nistar for booking inquiries, collaborations, or just to say hello. We\'d love to hear from you!'
+    }
+  ]
+});
 </script>
