@@ -111,7 +111,6 @@ const lineDisplay = computed(() => props.showLines ? 'block' : 'none')
   stroke-width: 3;
   stroke-linecap: butt;
   stroke-linejoin: miter;
-  //stroke-opacity: 0.3;
   stroke-opacity: 1;
   stroke-miterlimit: 4;
   stroke-dasharray: none;

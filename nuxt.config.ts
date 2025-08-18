@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 
   // SEO Configuration
   app: {
-    baseURL: '/nistar/',
+    baseURL: '/',
     buildAssetsDir: 'assets/',
     head: {
       title: 'Nistar | Chassidic Funk, Soul & Jazz Music',
@@ -41,7 +41,7 @@ export default defineNuxtConfig({
           property: 'og:description',
           content: 'Experience the unique fusion of Chassidic melodies with contemporary funk, soul, and jazz. Based in Florida, performing worldwide.'
         },
-        { property: 'og:image', content: 'https://www.nistarband.com/images/nistar-social.jpg' },
+        { property: 'og:image', content: 'https://www.nistarband.com/Nister_Logo-eng.png' },
 
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
@@ -51,11 +51,11 @@ export default defineNuxtConfig({
           name: 'twitter:description',
           content: 'Fusing traditional Jewish music with contemporary funk, soul, and jazz. Based in Florida.'
         },
-        { name: 'twitter:image', content: 'https://www.nistarband.com/images/nistar-social.jpg' }
+        { name: 'twitter:image', content: 'https://www.nistarband.com/Nister_Logo-eng.png' }
       ],
       link: [
         { rel: 'canonical', href: 'https://www.nistarband.com' },
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }, // Updated favicon path
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap',
@@ -69,6 +69,11 @@ export default defineNuxtConfig({
       routes: ['/sitemap.xml']
     }
   },
+  // Site configuration (required for sitemap)
+  site: {
+    url: 'https://www.nistarband.com',
+  },
+
   // Sitemap configuration
   sitemap: {
     hostname: 'https://www.nistarband.com',
@@ -84,6 +89,7 @@ export default defineNuxtConfig({
 
   // Robots.txt configuration
   robots: {
+    robotsTxt: false, // Disable automatic robots.txt generation
     UserAgent: '*',
     Allow: '/',
     Sitemap: 'https://www.nistarband.com/sitemap.xml'
@@ -92,7 +98,7 @@ export default defineNuxtConfig({
   // Module configurations
   tres: {
     devtools: false,
-    glsl: false,
+    glsl: true,
   },
   css: ['~/assets/css/main.css'],
 
