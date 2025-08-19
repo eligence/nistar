@@ -38,10 +38,10 @@
             </span>
         </ULink>
       </nav>
-      <MenuToggle />
+      <NavigationMenuToggle />
     </div>
   </header>
-  <MobileMenu :nav-items="navItems"/>
+  <NavigationMobileMenu :nav-items="navItems"/>
 </template>
 
 <script lang="ts" setup>

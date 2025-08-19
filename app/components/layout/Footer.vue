@@ -9,7 +9,7 @@
           </p>
         </div>
         <div class="flex flex-wrap justify-center space-x-6">
-         <SocialLinks />
+         <UiSocialLinks />
         </div>
         <div class="glass-text mt-4 md:mt-0">NISTAR - נִסְתָּר - The Hidden Light in Music</div>
       </div>

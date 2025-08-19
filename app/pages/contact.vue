@@ -1,5 +1,5 @@
 <template>
-  <PageLayout :header="'contact'">
+  <LayoutMain :header="'contact'">
     <template #details>
       <div class="flex flex-col gap-8 min-w-full text-center">
         <h3 class="mb-12 text-center">Eli Jayson</h3>
@@ -8,7 +8,7 @@
         <p><a href="https://www.instagram.com/nistar_band/">instagram</a></p>
       </div>
     </template>
-  </PageLayout>
+  </LayoutMain>
 </template>
 <script setup lang="ts">
 useHead({

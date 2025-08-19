@@ -1,10 +1,10 @@
 <template>
-  <PageLayout>
+  <LayoutMain>
     <span class="nistar-title fixed top-36 left-1/2 transform -translate-x-1/2 font-serif tracking-widest text-amber-300 text-4xl lg:text-5xl text-center">NISTAR</span>
-    <Sparks />
+    <AnimationsSparks />
     <h1 class="text-center">music is soul,</h1>
     <h1 class="text-center">soul is life</h1>
-  </PageLayout>
+  </LayoutMain>
 </template>
 <style scoped>
 .nistar-title {

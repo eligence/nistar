@@ -1,6 +1,6 @@
 <template>
   <div class="counter-container">
-    <ParticleSystem
+    <AnimationsParticleSystem
       :density="animatedDensity"
       :speed="2"
       :start-area="currentStartArea"

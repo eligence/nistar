@@ -1,16 +1,13 @@
 <template>
   <div class="min-h-screen flex flex-col relative overflow-hidden">
-    <Smoke />
-    <Header/>
-    <main class="flex-grow relative z-0" :class="{ 'hidden': isMobileMenuOpen }">
-      <slot />
-    </main>
-    <Footer />
+    <AnimationsSmoke />
+    <LayoutHeader />
+    <slot />
+    <LayoutFooter />
   </div>
 </template>
 
 <script setup>
-const isMobileMenuOpen = useMobileMenu()
 // Meta tags for SEO
 useHead({
   titleTemplate: (title) => {

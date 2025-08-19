@@ -1,5 +1,5 @@
 <template>
-  <PageLayout class="px-4 mb-12">
+  <LayoutMain class="px-4 mb-12">
     <h1 class="mb-8 text-center">Upcoming Shows</h1>
 
     <div v-if="upcomingShows.length === 0" class="text-center py-12">
@@ -8,12 +8,12 @@
     </div>
 
     <div v-else class="space-y-6">
-      <ShowCard v-for="(show, index) in upcomingShows" :key="index" :show="show"/>
+      <UiShowCard v-for="(show, index) in upcomingShows" :key="'upcoming-'+index" :show="show"/>
     </div>
 
     <h3 class="text-center mb-8 mt-12">Previous Shows</h3>
     <div class="space-y-6">
-      <ShowCard v-for="(show, index) in previousShows" :key="index" :show="show"/>
+      <UiShowCard v-for="(show, index) in previousShows" :key="'previous-'+index" :show="show"/>
     </div>
 
     <section class="mt-16 text-center">
@@ -25,7 +25,7 @@
         <p><span class="font-medium">Phone:</span> <a href="tel:+13864513843" class="text-blue-300 hover:text-blue-400">(386) 451-3843</a></p>
       </div>
     </section>
-  </PageLayout>
+  </LayoutMain>
 </template>
 
 <script setup lang="ts">
