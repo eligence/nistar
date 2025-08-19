@@ -20,9 +20,14 @@
 </style>
 
 <script setup>
+import { useNuxtApp } from '#app'
+const { $viewport } = useNuxtApp()
 // Animation state
-const initialCounterValue = 120
-const counter = ref(initialCounterValue)
+const initialCounterValue = computed(() => {
+  return $viewport.isLessThan('tablet') ? 120 : 300
+})
+
+const counter = ref(initialCounterValue.value)
 let animationStartTime = 0
 let isAnimating = false
 let animationFrameId = null
@@ -44,7 +49,7 @@ const animateCounter = (timestamp) => {
   // Phase 2: Count down from 800 to 70 over 2 seconds
   else if (elapsed < holdDuration + countdownDuration) {
     const progress = (elapsed - holdDuration) / countdownDuration
-    counter.value = Math.floor(initialCounterValue - (initialCounterValue - 70) * progress)
+    counter.value = Math.floor(initialCounterValue.value - (initialCounterValue.value - 70) * progress)
     animationFrameId = requestAnimationFrame(animateCounter)
   }
   // Animation complete

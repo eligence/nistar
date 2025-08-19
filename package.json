@@ -22,6 +22,7 @@
     "@tresjs/nuxt": "^4.0.0",
     "@unhead/vue": "^2.0.14",
     "nuxt": "^4.0.1",
+    "nuxt-viewport": "^2.3.1",
     "three": "^0.179.1",
     "vue3-particles": "^2.12.0"
   },

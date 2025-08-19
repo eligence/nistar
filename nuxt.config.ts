@@ -2,15 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
 
-  modules: [
-    '@nuxt/ui',
-    '@nuxt/eslint',
-    '@nuxt/image',
-    '@nuxt/scripts',
-    '@tresjs/nuxt',
-    '@nuxtjs/robots',
-    '@nuxtjs/sitemap'
-  ],
+  modules: ['@nuxt/ui', '@nuxt/eslint', '@nuxt/image', '@nuxt/scripts', '@tresjs/nuxt', '@nuxtjs/robots', '@nuxtjs/sitemap', 'nuxt-viewport'],
 
   // SEO Configuration
   app: {
