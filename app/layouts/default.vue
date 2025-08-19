@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col relative overflow-hidden">
-    <Elements />
-    <Navbar />
+    <Smoke />
+    <Header/>
     <main class="flex-grow relative z-0" :class="{ 'hidden': isMobileMenuOpen }">
       <slot />
     </main>
@@ -10,8 +10,6 @@
 </template>
 
 <script setup>
-import Navbar from '~/components/Navbar.vue';
-import Elements from '~/components/decorative/Elements.vue';
 import {useMobileMenu} from "../composables/useMobileMenu.js";
 const { isMobileMenuOpen } = useMobileMenu()
 // Meta tags for SEO
