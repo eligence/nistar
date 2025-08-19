@@ -1,14 +1,19 @@
 <template>
   <PageLayout>
-    <h1 class="text-3xl font-bold mb-8 text-center">Upcoming Shows</h1>
+    <h1 class="text-3xl mb-8 text-center">Upcoming Shows</h1>
 
-    <div v-if="shows.length === 0" class="text-center py-12">
+    <div v-if="upcomingShows.length === 0" class="text-center py-12">
       <p class="text-xl text-gray-400 mb-4">No upcoming shows scheduled at the moment.</p>
       <p class="text-gray-500">Check back soon for updates or follow us on social media!</p>
     </div>
 
     <div v-else class="space-y-6">
-      <ShowCard v-for="(show, index) in shows" :key="index" :show="show"/>
+      <ShowCard v-for="(show, index) in upcomingShows" :key="index" :show="show"/>
+    </div>
+
+    <h3 class="text-center mb-8 mt-12">Previous Shows</h3>
+    <div class="space-y-6">
+      <ShowCard v-for="(show, index) in previousShows" :key="index" :show="show"/>
     </div>
 
     <section class="mt-16 text-center">
@@ -23,15 +28,6 @@
 </template>
 
 <script setup lang="ts">
-interface Show {
-  date: string
-  venue: string
-  location: string
-  ticketUrl?: string
-  time?: string
-  address?: string
-}
-
 useHead({
   title: 'Shows | Nistar - Live Performances',
   meta: [
@@ -41,4 +37,7 @@ useHead({
     }
   ]
 });
+
+const upcomingShows = shows.filter(show => new Date(show.date) > new Date())
+const previousShows = shows.filter(show => new Date(show.date) < new Date())
 </script>
