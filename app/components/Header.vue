@@ -1,13 +1,13 @@
 <template>
   <header
-      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-1 py-2 md:px-4"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-3.5 py-2 md:px-4"
       :class="{ 'glass-bg': isScrolled }"
   >
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <NuxtLink
           aria-label="Home"
-          class="flex items-center group ml-2.5 md:ml-0"
+          class="flex items-center group md:ml-0"
           to="/"
       >
         <img
@@ -71,10 +71,10 @@ onUnmounted(() => {
 <style scoped>
 .glass-bg {
   background: linear-gradient(to bottom,
-  rgba(255, 255, 255, 0.15) 0%,
-  rgba(255, 255, 255, 0.05) 100%);
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 100%);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.30);
 }
 </style>
