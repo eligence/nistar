@@ -25,17 +25,17 @@
 
 @keyframes floatUp {
   0% {
-    opacity: 0;
+    opacity: 0.4;
     transform: translateZ(-300px) scale(0.3);
     filter: blur(5px) brightness(0.2);
   }
   30% {
-    opacity: 0.4;
+    opacity: 0.6;
     transform: translateZ(-225px) scale(0.5);
     filter: blur(3px) brightness(0.4);
   }
   40% {
-    opacity: 0.3;
+    opacity: 0.5;
     transform: translateZ(-250px) scale(0.5);
     filter: blur(4px) brightness(0.4);
   }
