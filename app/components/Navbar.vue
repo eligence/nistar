@@ -51,7 +51,8 @@ const { isMobileMenuOpen } = useMobileMenu()
 const navItems: NavItem = [
   {to: '/about', label: 'about'},
   {to: '/listen', label: 'listen'},
-  {to: '/contact', label: 'contact'},
+  {to: '/shows', label: 'shows'},
+  {to: '/contact', label: 'contact'},shows
 ];
 
 const toggleMobileMenu = () => {
