@@ -9,7 +9,7 @@
   >
     <div
         v-if="isMobileMenuOpen"
-        class="md:hidden bg-black/95 backdrop-blur-lg w-full fixed top-0 left-0 right-0 bottom-0 py-6 px-4 shadow-lg border-t border-gray-800 flex flex-col justify-center z-30"
+        class="md:hidden bg-black/95 backdrop-blur-lg w-full fixed top-0 left-0 right-0 bottom-0 py-6 px-4 shadow-lg border-t border-gray-800 flex flex-col justify-center z-30 glow"
     >
       <ParticleSystem
         :density="70"
@@ -73,5 +73,17 @@ const particleArea = {
 </script>
 
 <style scoped>
-
+.glow {
+  text-shadow:
+      -1px -1px 0 rgba(139, 69, 19, 0.8),
+      1px -1px 0 rgba(139, 69, 19, 0.8),
+      -1px 1px 0 rgba(139, 69, 19, 0.8),
+      1px 1px 0 rgba(139, 69, 19, 0.8),
+      0 -2px 8px rgba(255, 140, 0, 0.4),
+      0 0 3px rgba(255, 165, 0, 0.6),
+      0 0 8px rgba(255, 140, 0, 0.5),
+      0 0 20px rgba(255, 69, 0, 0.3),
+      0 0 35px rgba(255, 69, 0, 0.2),
+      0 3px 6px rgba(0, 0, 0, 0.7);
+}
 </style>
