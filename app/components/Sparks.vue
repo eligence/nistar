@@ -20,7 +20,6 @@
 </style>
 
 <script setup>
-import { useNuxtApp } from '#app'
 const { $viewport } = useNuxtApp()
 // Animation state
 const initialCounterValue = computed(() => {
@@ -56,7 +55,6 @@ const animateCounter = (timestamp) => {
   else {
     isAnimating = false
     counter.value = 70 // Ensure we end at exactly 70
-    return
   }
 }
 

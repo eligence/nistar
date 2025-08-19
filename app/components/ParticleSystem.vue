@@ -6,6 +6,13 @@
         class="spark"
         :ref="el => { if (el) particleRefs[index] = el }"
     ></div>
+    <div
+      v-if="showEndAreaText"
+      class="end-area-text"
+      :style="endAreaTextStyle"
+    >
+      <span class="font-serif tracking-widest text-amber-300 text-2xl lg:text-5xl text-center">NISTAR</span>
+    </div>
   </div>
 </template>
 
@@ -55,7 +62,11 @@ const props = defineProps({
   transitionDuration: {
     type: Number,
     default: 0
-  }
+  },
+  showEndAreaText: {
+    type: Boolean,
+    default: false
+  },
 })
 
 let winHeight = 0
@@ -75,6 +86,19 @@ const targetAreas = ref({
   startArea: null,
   midArea: null,
   endArea: null
+})
+
+// Computed style for end area text positioning
+const endAreaTextStyle = computed(() => {
+  const endAreaConfig = currentAreas.value.endArea || props.endArea
+  const centerX = (endAreaConfig.x.min + endAreaConfig.x.max) / 2
+  const centerY = (endAreaConfig.y.min + endAreaConfig.y.max) / 2
+
+  return {
+    left: (winWidth * centerX) + 'px',
+    top: (winHeight * centerY) + 'px',
+    transform: 'translate(-50%, -50%)'
+  }
 })
 
 const lerp = (start, end, factor) => {
@@ -331,7 +355,7 @@ const createParticles = async () => {
     particles.value = []
     await nextTick()
   }
-  
+
   // Create new particles
   particles.value = Array.from({ length: props.density }, (_, i) => ({ id: i }))
 
@@ -363,13 +387,13 @@ watch(() => props.density, (newDensity, oldDensity) => {
     const newParticles = [...particles.value]
     const startIndex = particles.value.length
     const count = newDensity - oldDensity
-    
+
     for (let i = 0; i < count; i++) {
       newParticles.push({ id: startIndex + i })
     }
-    
+
     particles.value = newParticles
-    
+
     // Wait for DOM to update with new particles
     nextTick(() => {
       // Only spawn the new particles
@@ -434,5 +458,12 @@ onUnmounted(() => {
   height: 4px;
   border-radius: 30%;
   box-shadow: 0 0 5px #AB000B;
+}
+
+.end-area-text {
+  position: absolute;
+  pointer-events: auto;
+  white-space: nowrap;
+  z-index: 1001;
 }
 </style>

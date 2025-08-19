@@ -11,6 +11,14 @@
         v-if="isMobileMenuOpen"
         class="md:hidden bg-black/95 backdrop-blur-lg w-full fixed top-0 left-0 right-0 bottom-0 py-6 px-4 shadow-lg border-t border-gray-800 flex flex-col justify-center z-30"
     >
+      <ParticleSystem
+        :density="70"
+        :speed="1.2"
+        :start-area="particleArea"
+        :mid-area="particleArea"
+        :end-area="particleArea"
+        :show-end-area-text="true"
+      />
       <EtzChaim :show-lines="true" class="absolute top-60 left-1/2 transform -translate-x-1/2 opacity-3 size-50" />
       <nav class="flex flex-col space-y-6 items-center">
         <ULink
@@ -56,6 +64,11 @@ const orderedNavItems = computed(() => {
     return (a.label || '').localeCompare(b?.label || '');
   });
 });
+
+const particleArea = {
+  x: {min: 0.22, max: 0.78},
+  y: {min: 0.05, max: 0.15},
+}
 </script>
 
 <style scoped>
