@@ -1,6 +1,8 @@
 <template>
-  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-1 py-2 md:px-4 glass-bg"
-    >
+  <header
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-1 py-2 md:px-4"
+      :class="{ 'glass-bg': isScrolled }"
+  >
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <NuxtLink
@@ -51,4 +53,28 @@ const navItems = [
   {to: '/shows', label: 'shows'},
   {to: '/contact', label: 'contact'}, shows
 ];
+
+const isScrolled = ref(false)
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 0
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
+<style scoped>
+.glass-bg {
+  background: linear-gradient(to bottom,
+  rgba(255, 255, 255, 0.15) 0%,
+  rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+</style>
