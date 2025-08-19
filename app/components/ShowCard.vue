@@ -6,9 +6,9 @@
         <div>
           <h2 class="text-xl font-semibold">{{ show.venue }}</h2>
           <p class="text-gray-400">{{ show.location }}</p>
-          <div v-if="isUpcomingShow" class="mt-2 flex items-center text-sm text-gray-400">
+          <div class="mt-2 flex items-center text-sm text-gray-400">
             <span>{{ show.date }}</span>
-            <template v-if="show.time">
+            <template v-if="isUpcomingShow && show.time">
               <span class="mx-2">•</span>
               <span>{{ show.time }}</span>
             </template>
