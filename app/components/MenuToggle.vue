@@ -5,7 +5,7 @@
       class="size-10 md:hidden focus:outline-none focus:ring-2 focus:ring-amber-300/50 rounded-md transition-all duration-200 hover:cursor-pointer px-0 py-0"
       color="neutral"
       variant="link"
-      @click="toggleTransformation"
+      @click="toggleMenu"
   >
     <span class="sr-only">Menu</span>
     <svg
@@ -48,9 +48,7 @@
 </template>
 
 <script lang="ts" setup>
-import {useMobileMenu} from "../composables/useMobileMenu";
-
-const { isMobileMenuOpen } = useMobileMenu()
+const isMobileMenuOpen = useMobileMenu()
 const isTransformed = ref(false)
 const centerFilled = ref(false)
 
@@ -124,6 +122,10 @@ const concentricRadii = computed(() => {
   })
 })
 
+const toggleMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+  toggleTransformation()
+}
 const toggleTransformation = () => {
   isTransformed.value = !isTransformed.value
 

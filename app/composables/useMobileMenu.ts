@@ -1,5 +1,3 @@
-export function useMobileMenu() {
-    return {
-        isMobileMenuOpen: useState('isMobileMenuOpen', () => false)
-    }
+export default function () {
+    return useState('is-mobile-menu-open', () => false)
 }

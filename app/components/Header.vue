@@ -36,29 +36,19 @@
             </span>
         </ULink>
       </nav>
-      <MenuToggle :isMobileMenuOpen="isMobileMenuOpen" @click="toggleMobileMenu"/>
+      <MenuToggle />
     </div>
   </header>
-  <MobileMenu :isMobileMenuOpen="isMobileMenuOpen" :navItems="navItems"/>
+  <MobileMenu :nav-items="navItems"/>
 </template>
 
 <script lang="ts" setup>
-import NavItem from "./MobileMenu.vue";
-import MenuToggle from "./MenuToggle.vue";
-import {useMobileMenu} from "../composables/useMobileMenu";
-
 const route = useRoute();
-const {isMobileMenuOpen} = useMobileMenu()
 
-const navItems: NavItem = [
+const navItems = [
   {to: '/about', label: 'about'},
   {to: '/listen', label: 'listen'},
   {to: '/shows', label: 'shows'},
   {to: '/contact', label: 'contact'}, shows
 ];
-
-const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-};
-
 </script>

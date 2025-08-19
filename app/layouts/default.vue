@@ -10,8 +10,7 @@
 </template>
 
 <script setup>
-import {useMobileMenu} from "../composables/useMobileMenu.js";
-const { isMobileMenuOpen } = useMobileMenu()
+const isMobileMenuOpen = useMobileMenu()
 // Meta tags for SEO
 useHead({
   titleTemplate: (title) => {

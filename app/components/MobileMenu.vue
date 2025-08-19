@@ -34,27 +34,26 @@
 </template>
 
 <script setup lang="ts">
-import {useMobileMenu} from "../composables/useMobileMenu";
-
-type NavItem = {
-  to: string,
-  label: string
+interface NavItem {
+  to: string;
+  label: string;
 }
+
 const props = defineProps<{
-  navItems: NavItem
+  navItems: NavItem[]
 }>()
 
-const { isMobileMenuOpen } = useMobileMenu()
+const isMobileMenuOpen = useMobileMenu()
 const route = useRoute() // Get current route
 
-const orderedNavItems = computed<NavItem[]>(() => {
-  const itemsWithHome = [...props.navItems, { to: '/', label: 'home' }];
+const orderedNavItems = computed(() => {
+  const itemsWithHome = [...(props.navItems || []), { to: '/', label: 'home' }];
   return itemsWithHome.sort((a, b) => {
     // Sort active item to the top
     if (a.to === route.path) return -1;
     if (b.to === route.path) return 1;
-    // Otherwise, sort alphabetically by label
-    return a.label.localeCompare(b.label);
+    // Otherwise, sort alphabetically by label, with null/undefined safety
+    return (a.label || '').localeCompare(b?.label || '');
   });
 });
 </script>

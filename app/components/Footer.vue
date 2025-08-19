@@ -17,9 +17,7 @@
   </footer>
 </template>
 <script setup lang="ts">
-import {useMobileMenu} from "../composables/useMobileMenu";
-
-const { isMobileMenuOpen } = useMobileMenu()
+const isMobileMenuOpen = useMobileMenu()
 </script>
 
 <style scoped>
