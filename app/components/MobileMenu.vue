@@ -26,6 +26,7 @@
             :key="item"
             :to="item.to"
             class="text-xl text-white hover:text-purple-300 transition-colors duration-200 w-full text-center py-2 relative"
+            @click="isMobileMenuOpen = false"
         >
           {{ item.label }}
           <span
