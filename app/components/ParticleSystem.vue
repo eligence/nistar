@@ -11,7 +11,7 @@
       class="end-area-text"
       :style="endAreaTextStyle"
     >
-      <span class="font-serif tracking-widest text-amber-300 text-2xl lg:text-5xl text-center">NISTAR</span>
+      <span class="font-serif tracking-widest text-amber-300 text-2xl lg:text-5xl text-center glow">NISTAR</span>
     </div>
   </div>
 </template>
@@ -465,5 +465,19 @@ onUnmounted(() => {
   pointer-events: auto;
   white-space: nowrap;
   z-index: 1001;
+}
+
+.glow {
+  text-shadow:
+      -1px -1px 0 rgba(139, 69, 19, 0.8),
+      1px -1px 0 rgba(139, 69, 19, 0.8),
+      -1px 1px 0 rgba(139, 69, 19, 0.8),
+      1px 1px 0 rgba(139, 69, 19, 0.8),
+      0 -2px 8px rgba(255, 140, 0, 0.4),
+      0 0 3px rgba(255, 165, 0, 0.6),
+      0 0 8px rgba(255, 140, 0, 0.5),
+      0 0 20px rgba(255, 69, 0, 0.3),
+      0 0 35px rgba(255, 69, 0, 0.2),
+      0 3px 6px rgba(0, 0, 0, 0.7);
 }
 </style>
