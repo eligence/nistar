@@ -10,11 +10,6 @@
 </template>
 
 <script setup>
-definePageMeta({
-  title: 'One-Time Particle Transition',
-  description: 'Particles transition from default to top-center contained area'
-})
-
 // Configuration
 const transitionDelay = 5 // seconds until transition starts
 const transitionDuration = 3 // seconds for the transition animation
