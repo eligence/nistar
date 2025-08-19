@@ -56,14 +56,34 @@ const isMobileMenuOpen = useMobileMenu()
 const route = useRoute() // Get current route
 
 const orderedNavItems = computed(() => {
-  const itemsWithHome = [...(props.navItems || []), { to: '/', label: 'home' }];
-  return itemsWithHome.sort((a, b) => {
-    // Sort active item to the top
-    if (a.to === route.path) return -1;
-    if (b.to === route.path) return 1;
-    // Otherwise, sort alphabetically by label, with null/undefined safety
-    return (a.label || '').localeCompare(b?.label || '');
-  });
+  const items = [...(props.navItems || [])];
+  const homeItem = { to: '/', label: 'home' };
+
+  // Find the active item (if any, and it's not home)
+  const activeIndex = items.findIndex(item =>
+      item.to === route.path && item.to !== '/'
+  );
+  const activeItem = activeIndex >= 0 ? items.splice(activeIndex, 1)[0] : null;
+
+  // Find home in the remaining items (if it exists)
+  const homeIndex = items.findIndex(item => item.to === '/');
+  const existingHome = homeIndex >= 0 ? items.splice(homeIndex, 1)[0] : homeItem;
+
+  // Build the final array
+  const result = [];
+
+  // 1. Active item first (if exists and not home)
+  if (activeItem) {
+    result.push(activeItem);
+  }
+
+  // 2. Home second (unless it's the active item)
+  if (route.path !== '/' || !activeItem) {
+    result.push(existingHome);
+  }
+
+  // 3. All other items in their original order
+  return [...result, ...items];
 });
 
 const particleArea = {
