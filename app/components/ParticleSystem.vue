@@ -10,7 +10,8 @@
 </template>
 
 <script setup>
-// Nuxt 3 auto-imports Vue composables, but we'll be explicit for clarity
+// based on https://codepen.io/jiayihu/pen/QwvjMZ
+// by https://codepen.io/jiayihu
 const container = ref(null)
 const particles = ref([])
 const particleRefs = ref([])
