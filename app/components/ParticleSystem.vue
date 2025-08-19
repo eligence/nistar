@@ -326,6 +326,13 @@ const spawn = (particleElement, particleIndex) => {
 }
 
 const createParticles = async () => {
+  // Clear any existing particles
+  if (particleRefs.value.length > 0) {
+    particles.value = []
+    await nextTick()
+  }
+  
+  // Create new particles
   particles.value = Array.from({ length: props.density }, (_, i) => ({ id: i }))
 
   await nextTick()
@@ -348,6 +355,35 @@ watch([() => props.startArea, () => props.midArea, () => props.endArea],
     },
     { deep: true }
 )
+
+// Watch for density changes and adjust particles
+watch(() => props.density, (newDensity, oldDensity) => {
+  if (newDensity > oldDensity) {
+    // Add more particles
+    const newParticles = [...particles.value]
+    const startIndex = particles.value.length
+    const count = newDensity - oldDensity
+    
+    for (let i = 0; i < count; i++) {
+      newParticles.push({ id: startIndex + i })
+    }
+    
+    particles.value = newParticles
+    
+    // Wait for DOM to update with new particles
+    nextTick(() => {
+      // Only spawn the new particles
+      for (let i = startIndex; i < particles.value.length; i++) {
+        if (particleRefs.value[i]) {
+          spawn(particleRefs.value[i], i)
+        }
+      }
+    })
+  } else if (newDensity < oldDensity) {
+    // Remove excess particles
+    particles.value = particles.value.slice(0, newDensity)
+  }
+})
 
 // Client-side only initialization
 onMounted(() => {

@@ -1,15 +1,75 @@
 <template>
-  <ParticleSystem
-    :density="800"
-    :speed="2"
-    :start-area="currentStartArea"
-    :mid-area="currentMidArea"
-    :end-area="currentEndArea"
-    :transition-duration="transitionDuration"
-  />
+  <div class="counter-container">
+    <ParticleSystem
+      :density="animatedDensity"
+      :speed="2"
+      :start-area="currentStartArea"
+      :mid-area="currentMidArea"
+      :end-area="currentEndArea"
+      :transition-duration="transitionDuration"
+    />
+  </div>
 </template>
 
+<style scoped>
+.counter-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
 <script setup>
+// Animation state
+const initialCounterValue = 120
+const counter = ref(initialCounterValue)
+let animationStartTime = 0
+let isAnimating = false
+let animationFrameId = null
+
+const animateCounter = (timestamp) => {
+  if (!isAnimating) {
+    isAnimating = true
+    animationStartTime = timestamp
+  }
+
+  const elapsed = timestamp - animationStartTime
+  const holdDuration = 10000 // 6 seconds
+  const countdownDuration = 3000 // 2 seconds
+
+  // Phase 1: Hold at initial value (800) for 6 seconds
+  if (elapsed < holdDuration) {
+    animationFrameId = requestAnimationFrame(animateCounter)
+  }
+  // Phase 2: Count down from 800 to 70 over 2 seconds
+  else if (elapsed < holdDuration + countdownDuration) {
+    const progress = (elapsed - holdDuration) / countdownDuration
+    counter.value = Math.floor(initialCounterValue - (initialCounterValue - 70) * progress)
+    animationFrameId = requestAnimationFrame(animateCounter)
+  }
+  // Animation complete
+  else {
+    isAnimating = false
+    counter.value = 70 // Ensure we end at exactly 70
+    return
+  }
+}
+
+// Computed property for the density
+const animatedDensity = computed(() => counter.value)
+
+// Start counter animation when component mounts
+onMounted(() => {
+  animationFrameId = requestAnimationFrame(animateCounter)
+})
+
+// Clean up animation frame on component unmount
+onUnmounted(() => {
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId)
+  }
+})
+
 // Configuration
 const transitionDelay = 5 // seconds until transition starts
 const transitionDuration = 3 // seconds for the transition animation
