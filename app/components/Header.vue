@@ -16,8 +16,8 @@
       </NuxtLink>
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-4">
-        <span class="font-serif text-lg tracking-widest text-amber-300 mr-4">NISTAR</span>
-        <div class="h-6 w-px bg-gray-700"></div>
+        <span v-if="route.name !== 'index'" class="font-serif text-lg tracking-widest text-amber-300 mr-4">NISTAR</span>
+        <div v-if="route.name !== 'index'" class="h-6 w-px bg-gray-700"></div>
         <ULink
             v-for="item in navItems"
             :key="item.to"
