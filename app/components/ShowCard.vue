@@ -1,12 +1,11 @@
 <template>
-  <div
-       class="bg-white/5 rounded-lg overflow-hidden hover:bg-white/10 transition-colors">
+  <div class="bg-white/5 rounded-lg overflow-hidden hover:bg-white/10 transition-colors text-left">
     <div class="p-6">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h2 class="text-xl font-semibold">{{ show.venue }}</h2>
           <p class="text-gray-400">{{ show.location }}</p>
-          <div class="mt-2 flex items-center text-sm text-gray-400">
+          <div class="mt-2 text-sm text-gray-400">
             <span>{{ show.date }}</span>
             <template v-if="isUpcomingShow && show.time">
               <span class="mx-2">•</span>
