@@ -14,8 +14,6 @@ export default defineNuxtConfig({
 
   // SEO Configuration
   app: {
-    baseURL: '/',
-    buildAssetsDir: 'assets/',
     head: {
       title: 'Nistar | Chassidic Funk, Soul & Jazz Music',
       htmlAttrs: {
