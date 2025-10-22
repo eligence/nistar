@@ -11,14 +11,6 @@
   </div>
 </template>
 
-<style scoped>
-.counter-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-</style>
-
 <script setup>
 const { $viewport } = useNuxtApp()
 // Animation state
@@ -206,6 +198,14 @@ onUnmounted(() => {
   clearTimers()
 })
 </script>
+
+<style scoped>
+.counter-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+</style>
 
 <style scoped>
 /* Optional: Add some animation to the target indicator */

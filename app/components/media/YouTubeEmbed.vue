@@ -6,7 +6,7 @@
       :params="params"
       :poster="poster"
       :title="title"
-      @iframeAdded="onIframeLoaded"
+      @iframe-added="onIframeLoaded"
     />
   </div>
 </template>

@@ -32,7 +32,7 @@
           <span
               v-if="item.to === route.path"
               class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/4 h-0.5 bg-purple-400 transition-all duration-300"
-          ></span>
+          />
         </ULink>
       </nav>
       <div class="absolute left-0 right-0 bottom-8 w-full flex justify-center">

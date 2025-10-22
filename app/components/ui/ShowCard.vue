@@ -13,7 +13,8 @@
             </template>
           </div>
         </div>
-        <a v-if="displayTicketUrl"
+        <a
+v-if="displayTicketUrl"
            :href="show.ticketUrl"
            target="_blank"
            rel="noopener noreferrer"

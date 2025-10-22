@@ -29,37 +29,37 @@
       <circle class="circle-0" cx="141.5" cy="163.8" r="34.2"/>
     </g>
     <!-- Connecting Lines - Right Side -->
-    <path class="connecting-line" d="M 162.85 418.275 L 227.2 339.3" id="path1"/>
-    <path class="connecting-line" d="M 216.45 324.675 L 175.525 343.2" id="path2"/>
-    <path class="connecting-line" d="M 216.45 298.35 L 168.675 275.925" id="path3"/>
-    <path class="connecting-line" d="M 216.45 231.075 L 175.5 251.55" id="path4"/>
-    <path class="connecting-line" d="M 161.85 229.125 L 227.175 150.15" id="path5"/>
+    <path id="path1" class="connecting-line" d="M 162.85 418.275 L 227.2 339.3"/>
+    <path id="path2" class="connecting-line" d="M 216.45 324.675 L 175.525 343.2"/>
+    <path id="path3" class="connecting-line" d="M 216.45 298.35 L 168.675 275.925"/>
+    <path id="path4" class="connecting-line" d="M 216.45 231.075 L 175.5 251.55"/>
+    <path id="path5" class="connecting-line" d="M 161.85 229.125 L 227.175 150.15"/>
 
     <!-- Horizontal Connecting Line -->
-    <path class="connecting-line" d="M 69.275 124.8 L 214.525 123.825" id="path6"/>
+    <path id="path6" class="connecting-line" d="M 69.275 124.8 L 214.525 123.825"/>
 
     <!-- Left Side Lines -->
-    <path class="connecting-line" d="M 113.15 82.875 L 65.375 109.2" id="path7"/>
-    <path class="connecting-line" d="M 57.525 151.125 L 122.85 228.1" id="path8"/>
-    <path class="connecting-line" d="M 68.3 232.05 L 107.2 251.55" id="path9"/>
-    <path class="connecting-line" d="M 112.125 274.95 L 64.35 294.45" id="path10"/>
-    <path class="connecting-line" d="M 69.275 312 L 214.5 312" id="path11"/>
-    <path class="connecting-line" d="M 68.3 322.725 L 111.15 340.275" id="path12"/>
-    <path class="connecting-line" d="M 56.575 338.325 L 123.825 418.275" id="path13"/>
+    <path id="path7" class="connecting-line" d="M 113.15 82.875 L 65.375 109.2"/>
+    <path id="path8" class="connecting-line" d="M 57.525 151.125 L 122.85 228.1"/>
+    <path id="path9" class="connecting-line" d="M 68.3 232.05 L 107.2 251.55"/>
+    <path id="path10" class="connecting-line" d="M 112.125 274.95 L 64.35 294.45"/>
+    <path id="path11" class="connecting-line" d="M 69.275 312 L 214.5 312"/>
+    <path id="path12" class="connecting-line" d="M 68.3 322.725 L 111.15 340.275"/>
+    <path id="path13" class="connecting-line" d="M 56.575 338.325 L 123.825 418.275"/>
 
     <!-- Vertical Lines -->
-    <path class="vertical-line" d="M 142.454 100.4 L 142.454 130.3" id="path14"/>
-    <path class="vertical-line" d="M 142.454 197.5 L 142.454 223.85" id="path15"/>
-    <path class="vertical-line" d="M 142.454 291.5 L 142.454 317.85" id="path16"/>
-    <path class="vertical-line" d="M 142.454 386 L 142.454 412" id="path17"/>
+    <path id="path14" class="vertical-line" d="M 142.454 100.4 L 142.454 130.3"/>
+    <path id="path15" class="vertical-line" d="M 142.454 197.5 L 142.454 223.85"/>
+    <path id="path16" class="vertical-line" d="M 142.454 291.5 L 142.454 317.85"/>
+    <path id="path17" class="vertical-line" d="M 142.454 386 L 142.454 412"/>
 
     <!-- Decorative Lines -->
-    <path class="decorative-line" d="M 218.4 108.225 L 172.575 82.875" id="path18"/>
-    <path class="decorative-line" d="M 35.12 158.9 L 35.1 184.275" id="path19"/>
-    <path class="decorative-line" d="M 35.158 252.525 L 35.1 277.875" id="path20"/>
-    <path class="decorative-line" d="M 248.631 252.525 L 248.625 277.875" id="path21"/>
-    <path class="decorative-line" d="M 248.625 157.975 L 248.625 184.275" id="path22"/>
-    <path class="decorative-line" d="M 70.225 218.4 L 214.525 218.4" id="path23"/>
+    <path id="path18" class="decorative-line" d="M 218.4 108.225 L 172.575 82.875"/>
+    <path id="path19" class="decorative-line" d="M 35.12 158.9 L 35.1 184.275"/>
+    <path id="path20" class="decorative-line" d="M 35.158 252.525 L 35.1 277.875"/>
+    <path id="path21" class="decorative-line" d="M 248.631 252.525 L 248.625 277.875"/>
+    <path id="path22" class="decorative-line" d="M 248.625 157.975 L 248.625 184.275"/>
+    <path id="path23" class="decorative-line" d="M 70.225 218.4 L 214.525 218.4"/>
     </svg>
 </template>
 

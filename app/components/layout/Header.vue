@@ -14,12 +14,12 @@
             alt="Nistar"
             class="w-10 h-10 transition-all duration-500 group-hover:opacity-90 bg-gray-100 rounded-full shadow-2xl"
             src="/Nister_Logo-eng.png"
-        />
+        >
       </NuxtLink>
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-4">
         <span v-if="route.name !== 'index'" class="font-serif text-lg tracking-widest text-amber-300 mr-4">NISTAR</span>
-        <div v-if="route.name !== 'index'" class="h-6 w-px bg-gray-700"></div>
+        <div v-if="route.name !== 'index'" class="h-6 w-px bg-gray-700"/>
         <ULink
             v-for="item in navItems"
             :key="item.to"
@@ -34,7 +34,7 @@
               <span
                   :class="{ 'w-full': item.to === route.name }"
                   class="absolute -bottom-1 left-0 w-0 h-px bg-purple-400 transition-all duration-300 group-hover:w-full"
-              ></span>
+              />
             </span>
         </ULink>
       </nav>

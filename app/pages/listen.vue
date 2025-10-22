@@ -8,7 +8,7 @@
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
           allowfullscreen
-      ></iframe>
+      />
       <iframe
         class="w-100 lg:w-lg xl:w-xl aspect-video"
         src="https://www.youtube.com/embed/videoseries?list=PLW7giUR5NtXgXVdPU8ObvsjMuDNaHkyvk"
@@ -16,7 +16,7 @@
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
-      ></iframe>
+      />
     </div>
     <template #details>
       <p>Ary Baldioceda - drums</p>

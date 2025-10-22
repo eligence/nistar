@@ -1,11 +1,11 @@
 <template>
-  <div class="particle-container" ref="container">
+  <div ref="container" class="particle-container">
     <div
         v-for="(particle, index) in particles"
         :key="index"
-        class="spark"
         :ref="el => { if (el) particleRefs[index] = el }"
-    ></div>
+        class="spark"
+    />
     <div
       v-if="showEndAreaText"
       class="end-area-text"
