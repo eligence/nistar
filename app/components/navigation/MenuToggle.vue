@@ -48,6 +48,8 @@
 </template>
 
 <script lang="ts" setup>
+import type {Sephira} from "../../../utils/types";
+
 const isMobileMenuOpen = useMobileMenu()
 const isTransformed = ref(false)
 const centerFilled = ref(false)
@@ -93,7 +95,6 @@ const actualTreeHeight = rawTreeBottomEdge - rawTreeTopEdge
 
 // Now apply the treeVerticalOffset to get the actual tree bounds
 const treeTopEdge = rawTreeTopEdge + treeVerticalOffset
-const treeBottomEdge = rawTreeBottomEdge + treeVerticalOffset
 
 // Make SVG square with size equal to tree height
 const svgSize = Math.ceil(actualTreeHeight) + 6
@@ -102,7 +103,6 @@ const svgCenterX = svgSize / 2
 // Center the tree vertically in the square SVG
 const verticalPadding = (svgSize - actualTreeHeight) / 2
 const targetTop = verticalPadding
-const targetBottom = svgSize - verticalPadding
 const concentricCenterY = svgSize / 2
 
 // Adjust tree positions to be centered in the square SVG
@@ -124,7 +124,6 @@ const concentricRadii = computed(() => {
 
 const toggleMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
-  toggleTransformation()
 }
 const toggleTransformation = () => {
   isTransformed.value = !isTransformed.value
@@ -139,7 +138,7 @@ const toggleTransformation = () => {
   }
 }
 
-const getCircleStyle = (sephira: any, index: number) => {
+const getCircleStyle = (sephira: Sephira, index: number) => {
   const targetRadius = concentricRadii.value[index]
 
   return {
@@ -164,5 +163,9 @@ const triangleStyle = computed(() => ({
   transformOrigin: `${svgCenterX}px ${targetTop}px`,
   transitionDelay: isTransformed.value ? '0.3s' : '0s'
 }))
+
+watch(isMobileMenuOpen, () => {
+  toggleTransformation()
+})
 </script>
 

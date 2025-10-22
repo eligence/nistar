@@ -82,12 +82,6 @@ const currentAreas = ref({
   endArea: null
 })
 
-const targetAreas = ref({
-  startArea: null,
-  midArea: null,
-  endArea: null
-})
-
 // Computed style for end area text positioning
 const endAreaTextStyle = computed(() => {
   const endAreaConfig = currentAreas.value.endArea || props.endArea
@@ -201,9 +195,9 @@ const animateToNewAreas = (newStartArea, newMidArea, newEndArea, duration) => {
   // Set up animation
   const startTime = performance.now()
   const fromAreas = {
-    startArea: { ...currentAreas.value.startArea } || { ...props.startArea },
-    midArea: { ...currentAreas.value.midArea } || { ...props.midArea },
-    endArea: { ...currentAreas.value.endArea } || { ...props.endArea }
+    startArea: currentAreas.value.startArea ? { ...currentAreas.value.startArea } : { ...props.startArea },
+    midArea: currentAreas.value.midArea ? { ...currentAreas.value.midArea } : { ...props.midArea },
+    endArea: currentAreas.value.endArea ? { ...props.endArea } : { ...props.endArea }
   }
 
   const toAreas = {
@@ -238,10 +232,6 @@ const range = (map, prop) => {
   const min = map[prop + 'Min']
   const max = map[prop + 'Max']
   return min + (max - min) * Math.random()
-}
-
-const randomEase = (easeThis, easeThat) => {
-  return Math.random() < 0.5 ? easeThat : easeThis
 }
 
 const setElementStyle = (element, styles) => {

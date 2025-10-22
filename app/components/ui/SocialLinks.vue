@@ -1,6 +1,7 @@
 <template>
   <UButton
-    v-for="item in navItems"
+    v-for="(item, i) in navItems"
+    :key="i"
     :to="item.to"
     :icon="item.icon"
     :aria-label="item.ariaLabel"

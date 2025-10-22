@@ -157,25 +157,6 @@ const executeTransition = () => {
   }, transitionDuration * 1000)
 }
 
-// Reset the demo
-const resetDemo = () => {
-  clearTimers()
-
-  // Reset state
-  currentState.value = 'Default'
-  hasTransitioned.value = false
-  timeUntilTransition.value = transitionDelay
-  showTargetIndicator.value = false
-
-  // Reset particle areas to default
-  currentStartArea.value = {...defaultConfig.startArea}
-  currentMidArea.value = {...defaultConfig.midArea}
-  currentEndArea.value = {...defaultConfig.endArea}
-
-  // Start the sequence again
-  startTransitionSequence()
-}
-
 // Clear all timers
 const clearTimers = () => {
   if (transitionTimer) {

@@ -14,11 +14,12 @@
           </div>
         </div>
         <a
-v-if="displayTicketUrl"
-           :href="show.ticketUrl"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors whitespace-nowrap text-center">
+          v-if="displayTicketUrl"
+          :href="show.ticketUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors whitespace-nowrap text-center"
+        >
           Get Tickets
         </a>
         <span v-else-if="isUpcomingShow" class="text-gray-400 text-sm">Details coming soon</span>
@@ -28,9 +29,18 @@ v-if="displayTicketUrl"
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  show: null,
+const props = withDefaults(defineProps<{
+  show?: Show
+}>(), {
+  show: () => ({
+    venue: '',
+    location: '',
+    date: '',
+    time: '',
+    ticketUrl: ''
+  })
 })
+
 const isUpcomingShow = new Date(props.show.date) > new Date()
 const displayTicketUrl = isUpcomingShow && props.show.ticketUrl
 </script>

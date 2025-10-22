@@ -15,28 +15,6 @@
 import 'lite-youtube-embed/src/lite-yt-embed.css'
 import LiteYoutube from 'lite-youtube-embed/src/lite-yt-embed.vue'
 
-const props = defineProps({
-  videoId: {
-    type: String,
-    required: true
-  },
-  isPlaylist: {
-    type: Boolean,
-    default: false
-  },
-  title: {
-    type: String,
-    default: 'YouTube video player'
-  },
-  poster: {
-    type: String,
-    default: 'hqdefault'
-  },
-  params: {
-    type: String,
-    default: 'rel=0&modestbranding=1'
-  }
-})
 
 const onIframeLoaded = (iframe: HTMLIFrameElement) => {
   // Additional iframe setup if needed
