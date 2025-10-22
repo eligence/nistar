@@ -54,6 +54,7 @@ export default defineNuxtConfig({
       ]
     }
   },
+
   nitro: {
     prerender: {
       routes: ['/sitemap.xml']
@@ -84,6 +85,34 @@ export default defineNuxtConfig({
     Allow: '/',
     Sitemap: 'https://www.nistarband.com/sitemap.xml'
   },
+
+  routeRules: process.env.NODE_ENV === 'production' ? {
+      // 1. Most specific patterns first - http with www
+      'http://www.nistarband.com/**': {
+        redirect: { to: 'https://www.nistarband.com$1', statusCode: 302 },
+      },
+      // 2. Protocol-relative with www (//www.)
+      '//www.nistarband.com/**': {
+        redirect: { to: 'https://www.nistarband.com$1', statusCode: 302 },
+      },
+      // 3. http without www
+      'http://nistarband.com/**': {
+        redirect: { to: 'https://www.nistarband.com$1', statusCode: 302 },
+      },
+      // 4. Protocol-relative without www (//nistarband.com)
+      '//nistarband.com/**': {
+        redirect: { to: 'https://www.nistarband.com$1', statusCode: 302 },
+      },
+      // 5. https without www
+      'https://nistarband.com/**': {
+        redirect: { to: 'https://www.nistarband.com$1', statusCode: 302 },
+      },
+      // 6. Catch-all for any other case (like just 'nistarband.com' or '/path')
+      '/**': {
+        redirect: { to: 'https://www.nistarband.com$1', statusCode: 302 },
+      },
+    }
+    : {},
 
   // Module configurations
   tres: {
