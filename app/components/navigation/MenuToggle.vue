@@ -48,7 +48,7 @@
 </template>
 
 <script lang="ts" setup>
-import type {Sephira} from "../../../utils/types";
+import type {Sephira} from "../../utils/types";
 
 const isMobileMenuOpen = useMobileMenu()
 const isTransformed = ref(false)

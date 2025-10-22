@@ -4,6 +4,7 @@ export type Show = {
     date: string
     time?: string
     ticketUrl?: string
+    address: string
 }
 
 export type Sephira = {

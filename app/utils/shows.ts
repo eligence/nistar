@@ -1,4 +1,4 @@
-export const shows = [
+export const shows: Show[] = [
     {
         date: "2024-09-22",
         venue: "Crazy Uncle Mike's",
